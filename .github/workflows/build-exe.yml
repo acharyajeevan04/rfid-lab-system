@@ -26,7 +26,20 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller SEARLab_RFID_App.spec --noconfirm
 
-      - name: Upload built app as an artifact
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+
+      - name: Build one-click installer
+        run: iscc installer.iss
+
+      - name: Upload one-click installer (give this to your professor)
+        uses: actions/upload-artifact@v4
+        with:
+          name: SEARLab_RFID_Setup
+          path: installer_output/SEARLab_RFID_Setup.exe
+          retention-days: 30
+
+      - name: Upload raw app folder (backup / for your own testing)
         uses: actions/upload-artifact@v4
         with:
           name: SEARLab_RFID_App-windows
