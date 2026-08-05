@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RFID Lab — SEARLab UTA</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{--bg:#f4f5f7;--surf:#fff;--bdr:rgba(0,0,0,.08);--bdm:rgba(0,0,0,.14);--tx:#1a1a1a;--sec:#6b7280;--hint:#9ca3af;--blue:#185FA5;--bl:#E6F1FB;--green:#3B6D11;--gl:#EAF3DE;--amber:#854F0B;--al:#FAEEDA;--red:#A32D2D;--rl:#FCEBEB;--purple:#534AB7;--pl:#EEEDFE;--teal:#0F6E56;--tl:#E1F5EE;--gray:#5F5E5A;--grl:#F1EFE8;--r:10px;--rs:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-size:14px;height:100vh;overflow:hidden}
+.app{display:flex;height:100vh}
+.sb{width:210px;min-width:210px;background:var(--surf);border-right:1px solid var(--bdr);display:flex;flex-direction:column}
+.brand{padding:16px;border-bottom:1px solid var(--bdr)}
+.bt{font-size:13px;font-weight:600}.bs{font-size:11px;color:var(--sec);margin-top:5px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ccc;margin-right:5px;transition:background .3s}
+.dot.on{background:#22c55e;box-shadow:0 0 6px #22c55e88}
+.nav{padding:6px 0;flex:1;overflow-y:auto}
+.ni{display:flex;align-items:center;gap:9px;padding:9px 16px;cursor:pointer;font-size:13px;color:var(--sec);border-left:2px solid transparent;transition:all .12s}
+.ni:hover{background:var(--bg);color:var(--tx)}.ni.active{color:var(--blue);background:var(--bl);border-left-color:var(--blue);font-weight:500}
+.ni svg{width:15px;height:15px;flex-shrink:0;opacity:.7}.ni.active svg{opacity:1}
+.abg{margin-left:auto;background:var(--rl);color:var(--red);font-size:10px;font-weight:600;padding:1px 6px;border-radius:10px}
+.sbf{padding:12px 16px;border-top:1px solid var(--bdr);font-size:11px;color:var(--hint)}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.topbar{display:flex;align-items:center;padding:0 20px;height:52px;background:var(--surf);border-bottom:1px solid var(--bdr);gap:12px;flex-shrink:0}
+.tpt{font-size:15px;font-weight:600;flex:1}.tps{font-size:12px;color:var(--sec)}
+.ticker{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sec);padding:5px 12px;background:var(--bg);border-radius:20px;border:1px solid var(--bdr)}
+.content{flex:1;overflow-y:auto;padding:20px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.met{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 16px}
+.ml{font-size:11px;color:var(--sec);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.mv{font-size:26px;font-weight:600;line-height:1}.ms{font-size:11px;color:var(--hint);margin-top:5px}
+.card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.ct{font-size:13px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.b{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap}
+.ba{background:var(--bl);color:var(--blue)}.bav{background:var(--gl);color:var(--green)}.bt2{background:var(--al);color:var(--amber)}.bc{background:var(--pl);color:var(--purple)}.bch{background:var(--tl);color:var(--teal)}.bst{background:var(--rl);color:var(--red)}
+.bbat{background:var(--al);color:var(--amber)}.beq{background:var(--bl);color:var(--blue)}.binv{background:var(--gl);color:var(--green)}.bnal{background:var(--rl);color:var(--red)}
+.bm{background:var(--gl);color:var(--green)}.bmm{background:var(--rl);color:var(--red)}.bd{background:var(--al);color:var(--amber)}.bu{background:var(--grl);color:var(--gray)}.bp{background:#f3f4f6;color:#6b7280}
+.zA{background:#dbeafe;color:#1d4ed8}.zB{background:#dcfce7;color:#15803d}.zC{background:#fef3c7;color:#92400e}.zD{background:#ede9fe;color:#6d28d9}
+.sz{background:#FFF7ED;color:#92400e;border:1px solid #FED7AA}.si{background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--bdr);font-size:11px;font-weight:600;color:var(--sec);text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--bdr);vertical-align:middle}
+tr:last-child td{border-bottom:none}tr:hover td{background:var(--bg)}
+.mono{font-family:'SF Mono',Monaco,monospace;font-size:11px;color:var(--sec)}
+.filters{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.filters input,.filters select{padding:7px 10px;border:1px solid var(--bdm);border-radius:var(--rs);font-size:13px;background:var(--surf);color:var(--tx);outline:none;min-width:130px}
+.filters input:focus,.filters select:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(24,95,165,.12)}
+.filters input{flex:1;min-width:200px}
+.btn{padding:7px 14px;border:1px solid var(--bdm);border-radius:var(--rs);background:var(--surf);color:var(--tx);font-size:13px;cursor:pointer;font-family:inherit;transition:all .12s}
+.btn:hover{background:var(--bg)}.btn:active{transform:scale(.98)}
+.btnp{background:var(--blue);color:#fff;border-color:var(--blue)}.btnp:hover{background:#0C447C}
+.btns{padding:4px 10px;font-size:11px}
+.pag{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pb{padding:4px 9px;border:1px solid var(--bdm);border-radius:var(--rs);background:var(--surf);cursor:pointer;font-size:12px}
+.pb:hover{background:var(--bg)}.pb.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.lf{max-height:300px;overflow-y:auto}
+.lr{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bdr);animation:slin .3s ease}
+@keyframes slin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.lr:last-child{border-bottom:none}
+.li{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.lis{background:var(--bl)}.lia{background:var(--rl)}.lid{background:var(--gl)}
+.lc{flex:1;min-width:0}
+.lt{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lsub{font-size:11px;color:var(--sec);margin-top:1px}.ltm{font-size:11px;color:var(--hint);flex-shrink:0}
+.zg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px}
+.floor{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.zonebox{min-height:150px;border:2px solid var(--bdr);border-radius:14px;padding:14px;background:linear-gradient(180deg,#fff,#f8fafc)}
+.zonebox.storage{border-color:#97C459;background:linear-gradient(180deg,#F4FBEF,#fff)}
+.zonehdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.ant{font-size:11px;color:var(--sec);padding:3px 8px;border-radius:99px;background:var(--bg);border:1px solid var(--bdr)}
+.zoneitems{display:flex;flex-direction:column;gap:6px;max-height:170px;overflow:auto}
+.zoneitem{font-size:11px;padding:7px 8px;border-radius:8px;background:#fff;border:1px solid var(--bdr);display:flex;justify-content:space-between;gap:8px}
+.conf{font-size:10px;color:var(--sec);white-space:nowrap}
+th.sortable{cursor:pointer;color:var(--blue)}
+th.sortable:hover{text-decoration:underline}
+.zcard{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:14px}
+.znum{font-size:28px;font-weight:700}
+.zbg{height:4px;background:var(--bg);border-radius:2px;margin:8px 0}
+.zb{height:4px;border-radius:2px;transition:width .6s ease}
+.vbox{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:20px;margin-bottom:14px}
+.vrow{display:flex;gap:8px;margin-bottom:12px}
+.vrow input{flex:1;padding:9px 12px;border:1px solid var(--bdm);border-radius:var(--rs);font-family:monospace;font-size:13px;background:var(--surf);color:var(--tx);outline:none;text-transform:uppercase}
+.vrow input:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(24,95,165,.12)}
+.vres{padding:16px;border-radius:var(--rs);margin-top:12px;display:none}
+.vrm{background:var(--gl);border:1px solid #97C459}.vrmm{background:var(--rl);border:1px solid #F09595}.vru{background:var(--grl);border:1px solid #D3D1C7}
+.vg{display:grid;grid-template-columns:140px 1fr;gap:4px 12px;font-size:12px}
+.vk{color:var(--sec)}.vv{font-weight:500}
+.drop{border:2px dashed var(--bdm);border-radius:var(--r);padding:28px;text-align:center;color:var(--sec);font-size:13px;cursor:pointer;transition:all .15s}
+.drop:hover{border-color:var(--blue);color:var(--blue);background:var(--bl)}
+.dsb{display:flex;align-items:center;gap:14px;background:var(--bl);border:1px solid #B5D4F4;border-radius:var(--r);padding:14px 18px;margin-bottom:14px}
+.rs{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--bdr);font-size:12px}
+.rs:last-child{border-bottom:none}
+.qe{padding:4px 10px;border:1px solid var(--bdm);border-radius:20px;font-size:11px;cursor:pointer;background:var(--bg);transition:all .12s;display:inline-block;margin:2px}
+.qe:hover{background:var(--bl);color:var(--blue);border-color:var(--blue)}
+.sitem{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.sitem:last-child{border-bottom:none}.sdot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.abox{background:var(--rl);border:1px solid #F09595;border-radius:var(--rs);padding:10px 14px;margin-bottom:8px;font-size:12px}
+.atit{font-weight:600;color:var(--red);margin-bottom:2px}
+.page{display:none}.page.active{display:block}
+.cw{position:relative;width:100%}
+.fz{background:#FFF7ED;color:#92400e;border:1px solid #FED7AA;display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:600}
+.fi{background:#EFF6FF;color:#1d4ed8;border:1px solid #BFDBFE;display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="sb">
+  <div class="brand">
+    <div class="bt">RFID Lab System</div>
+    <div class="bs"><span class="dot" id="wsd"></span><span id="wsl">Connecting...</span></div>
+  </div>
+  <nav class="nav">
+    <div class="ni active" data-page="dashboard"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>Dashboard</div>
+    <div class="ni" data-page="live"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M3 8a5 5 0 0 1 10 0M1 8a7 7 0 0 1 14 0"/></svg>Live Lab<span class="abg" id="lcnt" style="display:none">0</span></div>
+    <div class="ni" data-page="zones"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l5 3v7l-5 3-5-3V4z"/></svg>Zone Map</div>
+    <div class="ni" data-page="assets"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 7h14M5 3V1M11 3V1"/></svg>Asset Table</div>
+    <div class="ni" data-page="verify"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3 3"/></svg>EPC Verify</div>
+    <div class="ni" data-page="incoming"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M4 7l4 4 4-4"/><path d="M2 13h12"/></svg>Incoming Scans<span class="abg" id="abg">0</span></div>
+    <div class="ni" data-page="visitors"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="4" r="2.5"/><path d="M3 14c.8-3 2.5-4.5 5-4.5s4.2 1.5 5 4.5"/></svg>Visitors<span class="abg" id="vcnt" style="display:none">0</span></div>
+    <div class="ni" data-page="sessions"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l3 2"/></svg>Scan Sessions</div>
+    <div class="ni" data-page="drive"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l3-8h6l3 8H2z"/><path d="M5.5 8h5"/></svg>Google Drive</div>
+  </nav>
+  <div class="sbf">SEARLab UTA · 2025/26<br>searlabuta@gmail.com</div>
+</div>
+<div class="main">
+  <div class="topbar">
+    <div><div class="tpt" id="pgt">Dashboard</div><div class="tps" id="pgs">SEARLab UTA · RFID Asset Tracking</div></div>
+    <div class="ticker"><span class="dot" id="tcd"></span><span id="tct">Waiting for events...</span></div>
+    <span id="rb" style="display:none;background:var(--gl);color:var(--green);font-size:11px;font-weight:500;padding:3px 8px;border-radius:20px;border:1px solid #97C459">● Reader live</span>
+    <button class="btn btns" onclick="refreshPage()">↻ Refresh</button>
+  </div>
+  <div class="content">
+
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="metrics">
+        <div class="met"><div class="ml">Total Assets</div><div class="mv" id="m0">—</div><div class="ms">DB1 master records</div></div>
+        <div class="met"><div class="ml">Active</div><div class="mv" style="color:var(--green)" id="m1">—</div><div class="ms">status: Active</div></div>
+        <div class="met"><div class="ml">Total Scans</div><div class="mv" style="color:var(--blue)" id="m2">—</div><div class="ms" id="m2s">sessions · reads</div></div>
+        <div class="met"><div class="ml">Alerts</div><div class="mv" style="color:var(--red)" id="m3">—</div><div class="ms">mismatch + unknown</div></div>
+      </div>
+      <div class="two">
+        <div class="card"><div class="ct">Zone breakdown</div><div id="zbars"></div></div>
+        <div class="card"><div class="ct">Category distribution</div><div class="cw" style="height:170px"><canvas id="catC"></canvas></div></div>
+      </div>
+      <div class="two">
+        <div class="card"><div class="ct">Asset status</div><div id="stlist"></div></div>
+        <div class="card"><div class="ct">Recent alerts <span class="b bmm" id="abadge">0</span></div><div id="alist"></div></div>
+      </div>
+    </div>
+
+    <!-- LIVE -->
+    <div class="page" id="page-live">
+      <div class="metrics">
+        <div class="met"><div class="ml">Events (session)</div><div class="mv" style="color:var(--blue)" id="evc">0</div><div class="ms">since page load</div></div>
+        <div class="met"><div class="ml">Last EPC</div><div class="mv" style="font-size:13px;margin-top:4px" id="lepc">—</div><div class="ms" id="ltm">—</div></div>
+        <div class="met"><div class="ml">Last status</div><div class="mv" style="font-size:14px;margin-top:4px" id="lst">—</div><div class="ms" id="las">—</div></div>
+        <div class="met"><div class="ml">WS clients</div><div class="mv" id="wsc">—</div><div class="ms">connected</div></div>
+      </div>
+      
+
+
+<div class="card" id="liveMapCard" style="padding:0;overflow:hidden;margin-bottom:16px">
+  <div class="ct" style="justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bd)">
+    <span>Live Lab Map — RFID Floor Plan</span>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span class="b bm">Live</span>
+      <button class="btn btns" onclick="document.getElementById('liveMapFrame').contentWindow.location.reload()">Refresh Map</button>
+      <button class="btn btnp" onclick="window.open('/static/live_lab_map_embed.html','_blank')">Open Full Map</button>
+    </div>
+  </div>
+  <iframe
+    id="liveMapFrame"
+    src="/static/live_lab_map_embed.html"
+    style="width:100%;height:720px;border:0;background:#fff;display:block"
+    title="RFID Live Lab Map">
+  </iframe>
+</div>
+<div class="card">
+        <div class="ct" style="justify-content:space-between">Live scan feed<button class="btn btns" onclick="clearFeed()">Clear</button></div>
+        <div class="lf" id="lfeed"><div style="text-align:center;padding:32px;color:var(--hint);font-size:13px">Waiting for live events from Zebra MC3300R or Impinj R700...<br><span style="font-size:11px;margin-top:6px;display:block">Events appear instantly when a tag is scanned or Google Drive syncs</span></div></div>
+      </div>
+      <div class="card">
+        <div class="ct">Simulate a scan (dev/demo)</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+          <input type="text" id="sepc" placeholder="EPC hex..." style="flex:1;padding:8px 10px;border:1px solid var(--bdm);border-radius:var(--rs);font-family:monospace;font-size:13px;outline:none;text-transform:uppercase">
+          <select id="szone" style="padding:8px 10px;border:1px solid var(--bdm);border-radius:var(--rs);font-size:13px;outline:none"><option value="A">Zone A</option><option value="B">Zone B</option><option value="C">Zone C</option><option value="D">Zone D</option></select>
+          <input type="number" id="srssi" value="-55" style="width:90px;padding:8px 10px;border:1px solid var(--bdm);border-radius:var(--rs);font-size:13px;outline:none">
+          <select id="sant" style="padding:8px 10px;border:1px solid var(--bdm);border-radius:var(--rs);font-size:13px;outline:none"><option value="1">Antenna 1</option><option value="2">Antenna 2 Storage</option><option value="3">Antenna 3</option><option value="4">Antenna 4</option></select>
+          <button class="btn btnp" onclick="simScan()">Send scan</button>
+        </div>
+        <div style="font-size:11px;color:var(--sec);margin-bottom:6px">Real EPCs from your Drive files:</div>
+        <div>
+          <span class="qe" onclick="fsim('A02A061028A201551A022002','A')"><span class="fz">Zebra</span> Tag from RFID_*.csv ✓</span>
+          <span class="qe" onclick="fsim('300833B2DDD9014000000000','A')"><span class="fi">Impinj</span> NMC Cell Legacy ✓</span>
+          <span class="qe" onclick="fsim('300833B2DDD906C000000000','C')"><span class="fi">Impinj</span> Bed Frame ✓</span>
+          <span class="qe" onclick="fsim('0007160000000000000033F0','B')">Oscilloscope ✓</span>
+          <span class="qe" onclick="fsim('E280117000000000000001001','A')"><span class="fz">Naloxone</span> Kit 001 ✓</span>
+          <span class="qe" onclick="fsim('DEADBEEF000000000000CAFE','C')">Unknown tag ✗</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZONES -->
+    <div class="page" id="page-zones">
+      <div class="zg" id="zcards"></div>
+      <div class="card">
+        <div class="ct" style="justify-content:space-between">Live zone map — antenna + confidence
+          <button class="btn btns" onclick="loadZoneCurrent()">Refresh zone map</button>
+        </div>
+        <div class="floor" id="floorMap"></div>
+        <div style="font-size:11px;color:var(--sec);line-height:1.5">Zone assignment uses antenna mapping + RSSI + read count. Antenna 2 is reserved for the back Storage Area after the 100 ft Ethernet cable move.</div>
+      </div>
+      <div class="card">
+        <div class="ct">Zone detail</div>
+        <div class="filters">
+          <select id="zf" onchange="loadZD()"><option value="">All zones</option><option value="A">Zone A — Front RFID Area</option><option value="B">Zone B — Storage Area</option><option value="C">Zone C — Workbench Area</option><option value="D">Zone D — Entrance / Overflow</option></select>
+        </div>
+        <div class="tw"><table><thead><tr><th>ID</th><th>Asset</th><th>SKU</th><th>GTIN</th><th>Sub-zone</th><th>Category</th><th>Status</th><th>RSSI</th><th>Last scanned</th></tr></thead><tbody id="ztb"></tbody></table></div>
+      </div>
+    </div>
+
+    <!-- ASSETS -->
+    <div class="page" id="page-assets">
+      <div class="filters">
+        <input type="search" id="aq" placeholder="Search asset, EPC, Tag ID, location..." oninput="loadAssets()">
+        <select id="azn" onchange="loadAssets()"><option value="">All zones</option><option value="A">Zone A</option><option value="B">Zone B</option><option value="C">Zone C</option><option value="D">Zone D</option></select>
+        <select id="acat" onchange="loadAssets()"><option value="">All categories</option><option value="naloxone-kit">Naloxone kit</option><option value="battery-cell">Battery cell</option><option value="equipment">Equipment</option><option value="inventory">Inventory</option></select>
+        <select id="ast" onchange="loadAssets()"><option value="">All statuses</option><option value="Active">Active</option><option value="Available">Available</option><option value="Under Test">Under Test</option><option value="Cycling">Cycling</option><option value="Charging">Charging</option><option value="Need to Stock Up">Need to Stock Up</option></select>
+        <select id="asort" onchange="loadAssets()"><option value="record_id">Sort: ID</option><option value="asset_name">Sort: Asset</option><option value="sku">Sort: SKU</option><option value="gtin">Sort: GTIN</option><option value="zone">Sort: Zone</option><option value="status">Sort: Status</option><option value="last_scanned">Sort: Last scanned</option></select>
+        <select id="adir" onchange="loadAssets()"><option value="asc">Asc</option><option value="desc">Desc</option></select>
+        <button class="btn btnp" onclick="seedNaloxoneKits()">Add Naloxone Demo Kits</button>
+        <button class="btn btnp" onclick="seedKeyItems()">Add Key Demo Items</button>
+        <button class="btn" onclick="reviewUnmappedTags()">Review Unmapped Tags</button>
+        <button class="btn" onclick="downloadAssetsCSV()">Export Assets CSV</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="tw"><table><thead><tr>
+<th class="sortable" onclick="setTableSort('assets','record_id')" title="Click to sort">ID</th>
+<th class="sortable" onclick="setTableSort('assets','asset_name')" title="Click to sort">Asset name</th>
+<th class="sortable" onclick="setTableSort('assets','sku')" title="Click to sort">SKU</th>
+<th class="sortable" onclick="setTableSort('assets','gtin')" title="Click to sort">GTIN</th>
+<th class="sortable" onclick="setTableSort('assets','epc')" title="Click to sort">EPC</th>
+<th class="sortable" onclick="setTableSort('assets','tag_id')" title="Click to sort">Tag ID</th>
+<th class="sortable" onclick="setTableSort('assets','zone')" title="Click to sort">Zone</th>
+<th>Location</th>
+<th class="sortable" onclick="setTableSort('assets','category')" title="Click to sort">Category</th>
+<th class="sortable" onclick="setTableSort('assets','status')" title="Click to sort">Status</th>
+<th class="sortable" onclick="setTableSort('assets','last_scanned')" title="Click to sort">Last scanned</th>
+</tr></thead><tbody id="atb"></tbody></table></div>
+        <div style="padding:10px 16px;border-top:1px solid var(--bdr);display:flex;align-items:center">
+          <span id="ai" style="font-size:12px;color:var(--sec);flex:1"></span><div class="pag" id="ap"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERIFY -->
+    <div class="page" id="page-verify">
+      <div class="vbox">
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px">Manual EPC lookup — verify against DB1 master</div>
+        <div class="vrow">
+          <input type="text" id="ei" placeholder="Enter EPC (e.g. A02A061028A201551A022002)..." oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')doVerify()">
+          <button class="btn btnp" onclick="doVerify()">Verify</button>
+          <button class="btn" onclick="clearV()">Clear</button>
+        </div>
+        <div style="font-size:11px;color:var(--sec);margin-bottom:8px">Real tags from your Drive files:</div>
+        <div>
+          <span class="qe" onclick="sv('A02A061028A201551A022002')"><span class="fz">Zebra</span> From RFID_*.csv</span>
+          <span class="qe" onclick="sv('300833B2DDD9014000000000')"><span class="fi">Impinj</span> NMC Cell Legacy</span>
+          <span class="qe" onclick="sv('300833B2DDD906C000000000')"><span class="fi">Impinj</span> Bed Frame Storage</span>
+          <span class="qe" onclick="sv('0007160000000000000033F0')">Oscilloscope (B)</span>
+          <span class="qe" onclick="sv('34142B951C23E1EA4AE54C01')">DC Power Supply</span>
+          <span class="qe" onclick="sv('DEADBEEF000000000000CAFE')">Unknown EPC ✗</span>
+        </div>
+        <div class="vres" id="vres"></div>
+      </div>
+      <div class="card">
+        <div class="ct">CSV bulk upload — auto-detects Zebra or Impinj format</div>
+        <div class="drop" onclick="document.getElementById('cup').click()">
+          Drop <strong>RFID_*.csv</strong> (Zebra) or <strong>Impinj_Item_Test_*.csv</strong> (Impinj) here<br>
+          <span style="font-size:11px;margin-top:6px;display:block">Format auto-detected from file header. Results imported to DB2 and shown on live dashboard.</span>
+        </div>
+        <input type="file" id="cup" accept=".csv" style="display:none" onchange="uploadCSV(this,'ur')">
+        <div id="ur" style="margin-top:10px"></div>
+      </div>
+    </div>
+
+    <!-- INCOMING -->
+    <div class="page" id="page-incoming">
+      <div class="filters">
+        <input type="search" id="iq" placeholder="Search EPC, asset, scan ID..." oninput="loadIncoming()">
+        <select id="istat" onchange="loadIncoming()"><option value="">All statuses</option><option value="MATCHED">Matched</option><option value="MISMATCH">Mismatch</option><option value="DUPLICATE">Duplicate</option><option value="UNKNOWN">Unknown</option></select>
+        <select id="izone" onchange="loadIncoming()"><option value="">All zones</option><option value="A">Zone A</option><option value="B">Zone B</option><option value="C">Zone C</option><option value="D">Zone D</option></select>
+        <select id="isrc" onchange="loadIncoming()"><option value="">All sources</option><option value="zebra_drive">Zebra Drive</option><option value="impinj_drive">Impinj Drive</option><option value="scanner">Scanner push</option><option value="mqtt">MQTT</option><option value="csv_upload">CSV upload</option></select>
+        <select id="isort" onchange="loadIncoming()"><option value="created_at">Sort: Latest</option><option value="status">Sort: Status</option><option value="asset">Sort: Asset</option><option value="zone">Sort: Zone</option><option value="rssi">Sort: RSSI</option><option value="confidence">Sort: Confidence</option></select>
+        <select id="idir" onchange="loadIncoming()"><option value="desc">Desc</option><option value="asc">Asc</option></select>
+        <button class="btn" onclick="downloadScansCSV()">Export Scans CSV</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="tw"><table><thead><tr>
+<th class="sortable" onclick="setTableSort('scans','scan_id')" title="Click to sort">Scan ID</th>
+<th class="sortable" onclick="setTableSort('scans','epc')" title="Click to sort">EPC</th>
+<th class="sortable" onclick="setTableSort('scans','zone')" title="Click to sort">Zone</th>
+<th>Ant</th>
+<th>Reads</th>
+<th class="sortable" onclick="setTableSort('scans','confidence')" title="Click to sort">Conf</th>
+<th class="sortable" onclick="setTableSort('scans','date')" title="Click to sort">Date</th>
+<th class="sortable" onclick="setTableSort('scans','time')" title="Click to sort">Time</th>
+<th class="sortable" onclick="setTableSort('scans','reader')" title="Click to sort">Reader</th>
+<th class="sortable" onclick="setTableSort('scans','status')" title="Click to sort">Status</th>
+<th class="sortable" onclick="setTableSort('scans','asset')" title="Click to sort">Asset</th>
+<th class="sortable" onclick="setTableSort('scans','source')" title="Click to sort">Source</th>
+<th>Notes</th>
+</tr></thead><tbody id="itb"></tbody></table></div>
+        <div style="padding:10px 16px;border-top:1px solid var(--bdr);display:flex;align-items:center">
+          <span id="ii" style="font-size:12px;color:var(--sec);flex:1"></span><div class="pag" id="ip"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSIONS -->
+    <div class="page" id="page-sessions">
+      <div class="metrics">
+        <div class="met"><div class="ml">Sessions</div><div class="mv" id="sc">—</div><div class="ms">total</div></div>
+        <div class="met"><div class="ml">Total reads</div><div class="mv" id="sr">—</div><div class="ms">all readers</div></div>
+        <div class="met"><div class="ml">Peak session</div><div class="mv" style="font-size:16px;margin-top:4px" id="sp">—</div><div class="ms" id="spl">—</div></div>
+        <div class="met"><div class="ml">Max unique tags</div><div class="mv" id="sm">—</div><div class="ms">in one session</div></div>
+      </div>
+      <div class="two">
+        <div class="card"><div class="ct">Reads per session</div><div class="cw" style="height:200px"><canvas id="sC"></canvas></div></div>
+        <div class="card"><div class="ct">Reader type split</div><div class="cw" style="height:200px"><canvas id="rC"></canvas></div></div>
+      </div>
+      <div class="card"><div class="ct">Session log</div><div id="slog"></div></div>
+    </div>
+
+    <!-- VISITORS -->
+    <div class="page" id="page-visitors">
+      <div class="metrics">
+        <div class="met"><div class="ml">Checked in</div><div class="mv" style="color:var(--blue)" id="v0">0</div><div class="ms">active visitor badges</div></div>
+        <div class="met"><div class="ml">Recently seen</div><div class="mv" style="font-size:14px;margin-top:4px" id="v1">--</div><div class="ms">latest RFID read</div></div>
+        <div class="met"><div class="ml">Last zone</div><div class="mv" style="font-size:16px;margin-top:4px" id="v2">--</div><div class="ms">movement event</div></div>
+        <div class="met"><div class="ml">Checked out</div><div class="mv" id="v3">0</div><div class="ms">today/session history</div></div>
+      </div>
+      <div class="two">
+        <div class="card">
+          <div class="ct">Visitor check-in</div>
+          <div class="filters">
+            <input id="vname" placeholder="Visitor name or label">
+            <input id="vepc" placeholder="RFID EPC from badge">
+            <input id="vbadge" placeholder="Badge color / label">
+          </div>
+          <div class="filters">
+            <input id="vhost" placeholder="Host">
+            <input id="vpurpose" placeholder="Purpose">
+            <button class="btn btnp" onclick="checkInVisitor()">Check in</button>
+          </div>
+          <div style="font-size:11px;color:var(--sec);line-height:1.5">Use reusable visitor badge tags. DB1 remains the unique tag registry; this page stores the temporary person-to-tag assignment.</div>
+        </div>
+        <div class="card">
+          <div class="ct">Live visitor zones</div>
+          <div class="floor" id="visitorFloor"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct" style="justify-content:space-between">Active visitors<button class="btn btns" onclick="loadVisitors()">Refresh</button></div>
+        <div class="tw"><table><thead><tr><th>Visitor</th><th>Badge</th><th>EPC</th><th>Zone</th><th>Last seen</th><th>Host</th><th>Action</th></tr></thead><tbody id="vtb"></tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="ct">Movement feed</div>
+        <div class="lf" id="vfeed"><div style="text-align:center;padding:24px;color:var(--hint);font-size:13px">Visitor movements appear when checked-in badge tags are scanned.</div></div>
+      </div>
+    </div>
+
+    <!-- DRIVE -->
+    <div class="page" id="page-drive">
+      <div class="dsb">
+        <div style="font-size:22px">☁</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:var(--blue)" id="dt">Checking connection...</div>
+          <div style="font-size:12px;color:var(--sec);margin-top:2px" id="ds">searlabuta@gmail.com</div>
+        </div>
+        <button class="btn btnp" id="sbtn" onclick="triggerSync()">Sync now</button>
+        <button class="btn" onclick="connectDrive()">Connect / Reconnect</button>
+      </div>
+      <div class="three">
+        <div class="card">
+          <div class="ct">Drive folders</div>
+          <div style="font-size:12px;line-height:2.1">
+            <div class="rs"><span>📁 <strong>Zebra Scans</strong></span><span class="fz">RFID_*.csv</span></div>
+            <div class="rs"><span>📁 <strong>ItemTest Scans</strong></span><span class="fi">Impinj_*.csv</span></div>
+            <div class="rs"><span>Files synced</span><span id="dfiles" style="font-weight:600">—</span></div>
+            <div class="rs"><span>Scans imported</span><span id="dscans" style="font-weight:600">—</span></div>
+            <div class="rs"><span>Last sync</span><span id="dlast" style="color:var(--sec)">—</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ct">CSV formats detected</div>
+          <div style="font-size:12px;color:var(--sec);line-height:1.9">
+            <div style="margin-bottom:8px"><span class="fz">Zebra MC3300R</span><br>Header: INVENTORY SUMMARY<br>Columns: TAG, COUNT, RSSI<br>Account: searlabuta@gmail.com</div>
+            <div><span class="fi">Impinj R700</span><br>Header: // comment lines<br>Cols: Timestamp, EPC, TID, Antenna, RSSI, Freq</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ct">Sync flow</div>
+          <div style="font-size:12px;color:var(--sec);line-height:2">
+            1. Zebra / Impinj scans lab<br>
+            2. CSV saved to Drive folder<br>
+            3. Backend polls every 30s<br>
+            4. Format auto-detected<br>
+            5. EPC verified vs DB1<br>
+            6. DB2 updated + live update
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ct">Upload CSV immediately</div>
+        <div class="drop" onclick="document.getElementById('dup').click()">
+          Drop <strong>RFID_*.csv</strong> (Zebra) or <strong>Impinj_Item_Test_*.csv</strong> (Impinj) here<br>
+          <span style="font-size:11px;margin-top:6px;display:block">Auto-detected, parsed, verified vs DB1, imported into DB2 and dashboard updates live</span>
+        </div>
+        <input type="file" id="dup" accept=".csv" style="display:none" onchange="uploadCSV(this,'dur')">
+        <div id="dur" style="margin-top:10px"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<script>
+const API='';
+let ws=null,liveC=0,aPage=0,iPage=0;
+
+function setTableSort(table, field){
+  const sortId = table === 'assets' ? 'asort' : 'isort';
+  const dirId = table === 'assets' ? 'adir' : 'idir';
+  const sortEl = document.getElementById(sortId);
+  const dirEl = document.getElementById(dirId);
+
+  if(!sortEl || !dirEl) return;
+
+  if(sortEl.value === field){
+    dirEl.value = dirEl.value === 'asc' ? 'desc' : 'asc';
+  }else{
+    sortEl.value = field;
+    dirEl.value = table === 'assets' ? 'asc' : 'desc';
+  }
+
+  if(table === 'assets'){
+    aPage = 0;
+    loadAssets();
+  }else{
+    iPage = 0;
+    loadIncoming();
+  }
+}
+
+const PER=15;
+let catCh=null,sessCh=null,readCh=null;
+const PMETA={dashboard:['Dashboard','SEARLab UTA · RFID Asset Tracking'],live:['Live Lab','Real-time Zebra + Impinj feed'],zones:['Zone Map','Lab layout — 4 zones, 87 assets'],assets:['Asset Table','DB1 Master — unique tag registry'],verify:['EPC Verification','Verify any EPC against DB1'],incoming:['Incoming Scans','DB2 — all scan events'],visitors:['Visitors','Live zone tracking for checked-in RFID badges'],sessions:['Scan Sessions','Historical session log'],drive:['Google Drive','searlabuta@gmail.com · Zebra Scans + ItemTest Scans']};
+
+document.querySelectorAll('.ni').forEach(n=>{
+  n.addEventListener('click',()=>{
+    const pg=n.dataset.page;
+    document.querySelectorAll('.ni').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+    n.classList.add('active');document.getElementById('page-'+pg).classList.add('active');
+    const[t,s]=PMETA[pg]||['RFID',''];
+    document.getElementById('pgt').textContent=t;document.getElementById('pgs').textContent=s;
+    if(pg==='dashboard')loadDash();
+    if(pg==='assets'){aPage=0;loadAssets();}
+    if(pg==='incoming'){iPage=0;loadIncoming();}
+    if(pg==='visitors')loadVisitors();
+    if(pg==='zones'){loadZCards();loadZoneCurrent();loadZD();}
+    if(pg==='sessions')loadSessions();
+    if(pg==='drive')loadDrive();
+  });
+});
+
+function connectWS(){
+  const proto=location.protocol==='https:'?'wss':'ws';
+  ws=new WebSocket(`${proto}://${location.host||'localhost:8000'}/ws`);
+  ws.onopen=()=>{['wsd','tcd'].forEach(id=>document.getElementById(id).classList.add('on'));document.getElementById('wsl').textContent='Live';};
+  ws.onclose=()=>{['wsd','tcd'].forEach(id=>document.getElementById(id).classList.remove('on'));document.getElementById('wsl').textContent='Reconnecting...';setTimeout(connectWS,3000);};
+  ws.onerror=()=>ws.close();
+  ws.onmessage=m=>{try{onEv(JSON.parse(m.data));}catch(e){}};
+}
+
+function onEv(ev){
+  const{event_type:type,payload:p,timestamp:ts}=ev;
+  const t=new Date(ts).toLocaleTimeString();
+  if(type==='heartbeat'){document.getElementById('wsc').textContent=p.clients||1;return;}
+  if(type==='new_scan'){
+    liveC++;document.getElementById('evc').textContent=liveC;
+    const lc=document.getElementById('lcnt');lc.style.display='';lc.textContent=liveC;
+    document.getElementById('lepc').textContent=(p.epc||'').substring(0,14)+'...';
+    document.getElementById('ltm').textContent=`${p.date} ${p.time}`;
+    document.getElementById('lst').textContent=p.status;
+    document.getElementById('las').textContent=p.asset||'—';
+    const cls={MATCHED:'bm',MISMATCH:'bmm',DUPLICATE:'bd',UNKNOWN:'bu'}[p.status]||'bp';
+    addRow('scan',`<span class="b ${cls}">${p.status}</span> ${p.epc}`,`${p.asset||'Unknown'} · Zone ${p.zone||'?'} · ${srcLbl(p.source)}`,t);
+    document.getElementById('tct').textContent=`${p.status}: ${(p.epc||'').substring(0,12)}… · ${p.asset||'?'}`;
+    if(p.status==='MISMATCH'||p.status==='UNKNOWN'){const ab=document.getElementById('abg');ab.textContent=parseInt(ab.textContent||0)+1;}
+    dbd();
+    if(document.getElementById('page-incoming').classList.contains('active'))loadIncoming();
+  }
+  if(type==='alert')addRow('alert',`⚠ ${p.status}: ${p.epc}`,p.message||'',t);
+  if(type==='drive_sync'){addRow('drive',`Drive sync: ${p.scans_imported} scans`,`${p.new_files} file(s) · Zebra + Impinj`,t);document.getElementById('tct').textContent=`Drive sync: ${p.scans_imported} scans`;dbd();}
+  if(type==='bulk_import'){addRow('drive',`CSV import: ${p.count} scans (${p.source})`,`${p.filename}`,t);dbd();}
+}
+
+function addRow(type,title,sub,tm){
+  const f=document.getElementById('lfeed');
+  const ph=f.querySelector('div[style*="text-align:center"]');if(ph)ph.remove();
+  const icons={scan:'📡',alert:'⚠',drive:'☁'};const cls={scan:'lis',alert:'lia',drive:'lid'}[type]||'lis';
+  const r=document.createElement('div');r.className='lr';
+  r.innerHTML=`<div class="li ${cls}">${icons[type]||'📡'}</div><div class="lc"><div class="lt">${title}</div><div class="lsub">${sub}</div></div><div class="ltm">${tm}</div>`;
+  f.insertBefore(r,f.firstChild);
+  while(f.children.length>100)f.removeChild(f.lastChild);
+}
+function clearFeed(){document.getElementById('lfeed').innerHTML=`<div style="text-align:center;padding:24px;color:var(--hint);font-size:13px">Feed cleared.</div>`;}
+
+const baseOnEv=onEv;
+onEv=function(ev){
+  baseOnEv(ev);
+  const{event_type:type,payload:p,timestamp:ts}=ev;
+  const t=new Date(ts).toLocaleTimeString();
+  if(type==='visitor_checked_in'||type==='visitor_checked_out'){
+    addVisitorFeed(type==='visitor_checked_in'?'checkin':'checkout',`${p.display_name} ${type==='visitor_checked_in'?'checked in':'checked out'}`,`${p.badge_label||p.visitor_id} - ${(p.epc||'').substring(0,14)}...`,t);
+    loadVisitors();
+  }
+  if(type==='visitor_moved'){
+    document.getElementById('v1').textContent=p.display_name||p.visitor_id;
+    document.getElementById('v2').textContent=`Zone ${p.to_zone||'?'} ${p.confidence_label||''}`;
+    addVisitorFeed('move',`${p.display_name||p.visitor_id} moved to Zone ${p.to_zone||'?'}`,`${p.badge_label||''} ${p.from_zone?`from Zone ${p.from_zone}`:'first seen'} - ${Math.round((p.zone_confidence||0)*100)}% confidence`,t);
+    document.getElementById('tct').textContent=`Visitor: ${p.display_name||p.visitor_id} - Zone ${p.to_zone||'?'}`;
+    loadVisitors();
+  }
+}
+
+function addVisitorFeed(type,title,sub,tm){
+  const f=document.getElementById('vfeed'); if(!f)return;
+  const ph=f.querySelector('div[style*="text-align:center"]');if(ph)ph.remove();
+  const icons={move:'->',checkin:'+',checkout:'ok'};const cls={move:'lis',checkin:'lid',checkout:'lia'}[type]||'lis';
+  const r=document.createElement('div');r.className='lr';
+  r.innerHTML=`<div class="li ${cls}">${icons[type]}</div><div class="lc"><div class="lt">${title}</div><div class="lsub">${sub}</div></div><div class="ltm">${tm}</div>`;
+  f.insertBefore(r,f.firstChild);
+  while(f.children.length>60)f.removeChild(f.lastChild);
+}
+
+let _dbt=null;
+function dbd(){clearTimeout(_dbt);_dbt=setTimeout(()=>{if(document.getElementById('page-dashboard').classList.contains('active'))loadDash();else rbadge();},800);}
+async function rbadge(){try{const s=await api('/api/scans/stats');const n=(s.MISMATCH||0)+(s.UNKNOWN||0);document.getElementById('abg').textContent=n;document.getElementById('m3').textContent=n;}catch(e){}}
+
+async function loadDash(){
+  try{
+    const d=await api('/api/dashboard');
+    animV('m0',d.total_assets);animV('m1',d.active_assets);animV('m2',d.total_scans);animV('m3',d.alerts);
+    document.getElementById('m2s').textContent=`${d.total_sessions} sessions · ${(d.total_reads||0).toLocaleString()} reads`;
+    document.getElementById('abg').textContent=d.alerts;document.getElementById('abadge').textContent=d.alerts;
+    const zc={A:'#185FA5',B:'#3B6D11',C:'#854F0B',D:'#534AB7'};
+    const zn={A:'Front RFID Area',B:'Storage Area',C:'Workbench Area',D:'Entrance / Overflow'};
+    const zb=document.getElementById('zbars');zb.innerHTML='';
+    (d.zone_breakdown||[]).sort((a,b)=>a.zone_code.localeCompare(b.zone_code)).forEach(z=>{
+      zb.innerHTML+=`<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span><strong>Zone ${z.zone_code}</strong> — ${zn[z.zone_code]||z.zone_name}</span><span style="color:var(--sec)">${z.count} (${z.pct}%)</span></div><div class="zbg"><div class="zb" style="width:${z.pct}%;background:${zc[z.zone_code]}"></div></div></div>`;
+    });
+    const cats=d.category_breakdown||{};
+    if(catCh)catCh.destroy();
+    catCh=new Chart(document.getElementById('catC'),{type:'doughnut',data:{labels:Object.keys(cats),datasets:[{data:Object.values(cats),backgroundColor:['#BA7517','#185FA5','#3B6D11'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+    const sl=document.getElementById('stlist');sl.innerHTML='';
+    Object.entries(d.status_breakdown||{}).sort((a,b)=>b[1]-a[1]).forEach(([s,c])=>{sl.innerHTML+=`<div class="rs"><span class="b ${sb(s)}">${s}</span><span style="font-weight:600">${c}</span></div>`;});
+    const[mis,unk]=await Promise.all([api('/api/scans?status=MISMATCH&limit=4'),api('/api/scans?status=UNKNOWN&limit=3')]);
+    const all=[...mis,...unk].slice(0,6);const al=document.getElementById('alist');al.innerHTML='';
+    if(!all.length){al.innerHTML='<div style="font-size:13px;color:var(--sec);padding:8px 0">No active alerts</div>';return;}
+    all.forEach(s=>{al.innerHTML+=`<div class="abox"><div class="atit">${s.verification_status} — ${s.scan_id} <span class="b ${srcCls(s.source)}" style="font-size:10px">${srcLbl(s.source)}</span></div><div>${(s.epc||'').substring(0,16)}… · Zone ${s.scanned_zone||'?'} · ${s.scan_date||''}</div></div>`;});
+  }catch(e){console.warn(e);}
+}
+
+async function loadAssets(){
+  const p=new URLSearchParams({limit:PER+1,skip:aPage*PER});
+  const q=document.getElementById('aq').value,zn=document.getElementById('azn').value,cat=document.getElementById('acat').value,st=document.getElementById('ast').value;
+  const sort=document.getElementById('asort')?.value||'record_id',dir=document.getElementById('adir')?.value||'asc';
+  if(q)p.append('q',q);if(zn)p.append('zone',zn);if(cat)p.append('category',cat);if(st)p.append('status',st);p.append('sort_by',sort);p.append('sort_dir',dir);
+  try{
+    const data=await api(`/api/assets?${p}`);const hm=data.length>PER;const rows=hm?data.slice(0,PER):data;
+    document.getElementById('atb').innerHTML=rows.map(r=>`<tr><td class="mono">${r.record_id}</td><td style="font-weight:500">${r.asset_name}</td><td class="mono">${r.sku||'—'}</td><td class="mono">${r.gtin||'—'}</td><td class="mono">${r.epc}</td><td style="font-size:11px;color:var(--sec)">${r.tag_id}</td><td><span class="b z${r.zone_code}">Z${r.zone_code}</span></td><td style="font-size:11px;color:var(--sec);max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.component_location||''}</td><td><span class="b ${cb(r.category)}">${r.category}</span></td><td><span class="b ${sb(r.status)}">${r.status}</span></td><td style="font-size:11px;color:var(--sec)">${r.scan_date||''}</td></tr>`).join('');
+    document.getElementById('ai').textContent=`Showing ${aPage*PER+1}–${aPage*PER+rows.length}`;
+    buildPag('ap',aPage,hm,p=>{aPage=p;loadAssets();});
+  }catch(e){console.warn(e);}
+}
+
+
+async function loadIncoming(){
+  const p=new URLSearchParams({limit:PER+1,skip:iPage*PER});
+  const q=document.getElementById('iq').value,st=document.getElementById('istat').value,zn=document.getElementById('izone').value,src=document.getElementById('isrc').value;
+  const sort=document.getElementById('isort')?.value||'created_at',dir=document.getElementById('idir')?.value||'desc';
+  if(q)p.append('q',q);if(st)p.append('status',st);if(zn)p.append('zone',zn);if(src)p.append('source',src);p.append('sort_by',sort);p.append('sort_dir',dir);
+  try{
+    const data=await api(`/api/scans?${p}`);const hm=data.length>PER;const rows=hm?data.slice(0,PER):data;
+    document.getElementById('itb').innerHTML=rows.map(r=>`<tr><td class="mono">${r.scan_id}</td><td class="mono">${r.epc}</td><td><span class="b z${r.scanned_zone}">${r.scanned_zone||'?'}</span></td><td class="mono">${r.antenna_id||'—'}</td><td class="mono">${r.read_count||1}</td><td><span class="b ${confCls(r.zone_confidence)}">${r.zone_confidence!=null?Math.round(r.zone_confidence*100)+'%':'—'}</span></td><td style="font-size:11px">${r.scan_date||''}</td><td style="font-size:11px">${r.scan_time||''}</td><td style="font-size:11px;color:var(--sec)">${r.reader_id||''}</td><td><span class="b ${vb(r.verification_status)}">${r.verification_status}</span></td><td style="font-size:12px">${r.matched_asset_name||'—'}</td><td><span class="b ${srcCls(r.source)}" style="font-size:10px">${srcLbl(r.source)}</span></td><td title="${r.zone_reason||r.notes||''}" style="font-size:11px;color:var(--sec);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.notes||''}</td></tr>`).join('');
+    document.getElementById('ii').textContent=`Showing ${iPage*PER+1}–${iPage*PER+rows.length}`;
+    buildPag('ip',iPage,hm,p=>{iPage=p;loadIncoming();});
+  }catch(e){console.warn(e);}
+}
+
+
+async function loadZCards(){
+  try{
+    const d=await api('/api/dashboard');
+    const info={A:{n:'Zone A',d:'Front RFID area / demo table',c:'#185FA5'},B:{n:'Zone B',d:'Storage Area · back antenna',c:'#3B6D11'},C:{n:'Zone C',d:'Workbench Area',c:'#854F0B'},D:{n:'Zone D',d:'Entrance / Overflow / drawer',c:'#534AB7'}};
+    const g=document.getElementById('zcards');g.innerHTML='';
+    (d.zone_breakdown||[]).sort((a,b)=>a.zone_code.localeCompare(b.zone_code)).forEach(z=>{
+      const i=info[z.zone_code]||{n:`Zone ${z.zone_code}`,d:'',c:'#888'};
+      g.innerHTML+=`<div class="zcard"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div><div style="font-size:14px;font-weight:600">${i.n}</div><div style="font-size:11px;color:var(--sec);margin-top:2px">${i.d}</div></div><div class="znum" style="color:${i.c}">${z.count}</div></div><div class="zbg"><div class="zb" style="width:${z.pct}%;background:${i.c}"></div></div><div style="font-size:11px;color:var(--sec);margin-top:6px">${z.pct}% of total assets</div></div>`;
+    });
+  }catch(e){}
+}
+async function loadZoneCurrent(){
+  const el=document.getElementById('floorMap'); if(!el)return;
+  try{
+    const d=await api('/api/zones/current');
+    el.innerHTML=(d.zones||[]).map(z=>{
+      const items=(z.items||[]).slice(0,6);
+      const storage=z.zone_name&&z.zone_name.toLowerCase().includes('storage')?' storage':'';
+      return `<div class="zonebox${storage}"><div class="zonehdr"><div><div style="font-weight:700">Zone ${z.zone_code} — ${z.zone_name}</div><div style="font-size:11px;color:var(--sec);margin-top:2px">${z.description||''}</div></div><span class="ant">Antenna ${z.antenna_id}</span></div><div class="zoneitems">${items.length?items.map(i=>`<div class="zoneitem"><span>${(i.asset_name||i.epc||'Unknown').toString().slice(0,34)}</span><span class="conf">${i.confidence_label||'—'} · ${i.zone_confidence!=null?Math.round(i.zone_confidence*100)+'%':'—'}</span></div>`).join(''):'<div style="font-size:12px;color:var(--hint)">No recent tags assigned</div>'}</div></div>`;
+    }).join('');
+  }catch(e){el.innerHTML='<div style="font-size:12px;color:var(--red)">Could not load zone map.</div>'}
+}
+
+async function loadZD(){
+  const zn=document.getElementById('zf').value;const p=new URLSearchParams({limit:100});if(zn)p.append('zone',zn);
+  try{
+    const data=await api(`/api/assets?${p}`);
+    document.getElementById('ztb').innerHTML=data.map(r=>`<tr><td class="mono">${r.record_id}</td><td style="font-weight:500">${r.asset_name}</td><td class="mono">${r.sku||'—'}</td><td class="mono">${r.gtin||'—'}</td><td style="font-size:11px;color:var(--sec)">${r.sub_zone||''}</td><td><span class="b ${cb(r.category)}">${r.category}</span></td><td><span class="b ${sb(r.status)}">${r.status}</span></td><td class="mono">${r.rssi_dbm!=null?r.rssi_dbm+' dBm':'—'}</td><td style="font-size:11px;color:var(--sec)">${r.scan_date||''}</td></tr>`).join('');
+  }catch(e){}
+}
+
+async function loadVisitors(){
+  try{
+    const sum=await api('/api/visitors/summary');
+    const rows=await api('/api/visitors/live');
+    document.getElementById('v0').textContent=sum.checked_in||0;
+    document.getElementById('v3').textContent=sum.checked_out||0;
+    const vc=document.getElementById('vcnt');vc.style.display=(sum.checked_in||0)?'':'none';vc.textContent=sum.checked_in||0;
+    const latest=rows.find(v=>v.last_seen_at);
+    document.getElementById('v1').textContent=latest?latest.display_name:'--';
+    document.getElementById('v2').textContent=latest&&latest.current_zone?`Zone ${latest.current_zone}`:'--';
+    renderVisitorTable(rows);
+    renderVisitorFloor(rows);
+  }catch(e){console.warn(e);}
+}
+
+function renderVisitorTable(rows){
+  const tb=document.getElementById('vtb'); if(!tb)return;
+  tb.innerHTML=rows.length?rows.map(v=>`<tr><td style="font-weight:600">${v.display_name}<div style="font-size:11px;color:var(--sec)">${v.visitor_id}</div></td><td>${v.badge_label||'--'}</td><td class="mono">${v.epc}</td><td><span class="b z${v.current_zone||''}">Z${v.current_zone||'?'}</span><div style="font-size:11px;color:var(--sec)">${v.current_zone_name||'Not seen yet'}</div></td><td style="font-size:11px;color:var(--sec)">${v.last_seen_at?new Date(v.last_seen_at).toLocaleString():'Waiting for scan'}</td><td>${v.host||'--'}</td><td><button class="btn btns" onclick="checkOutVisitor('${v.visitor_id}')">Check out</button></td></tr>`).join(''):'<tr><td colspan="7" style="text-align:center;color:var(--hint);padding:24px">No active visitors checked in.</td></tr>';
+}
+
+function renderVisitorFloor(rows){
+  const el=document.getElementById('visitorFloor'); if(!el)return;
+  const meta={A:['Front RFID Area','#185FA5'],B:['Storage Area','#3B6D11'],C:['Workbench Area','#854F0B'],D:['Entrance / Overflow','#534AB7']};
+  el.innerHTML=Object.entries(meta).map(([z,[name,color]])=>{
+    const items=rows.filter(v=>v.current_zone===z);
+    return `<div class="zonebox"><div class="zonehdr"><div><div style="font-weight:700;color:${color}">Zone ${z}</div><div style="font-size:11px;color:var(--sec);margin-top:2px">${name}</div></div><span class="ant">${items.length}</span></div><div class="zoneitems">${items.length?items.map(v=>`<div class="zoneitem"><span>${v.display_name}</span><span class="conf">${v.badge_label||v.visitor_id}</span></div>`).join(''):'<div style="font-size:12px;color:var(--hint)">No visitors here</div>'}</div></div>`;
+  }).join('');
+}
+
+async function checkInVisitor(){
+  const payload={
+    display_name:document.getElementById('vname').value.trim(),
+    epc:document.getElementById('vepc').value.trim().toUpperCase(),
+    badge_label:document.getElementById('vbadge').value.trim()||null,
+    host:document.getElementById('vhost').value.trim()||null,
+    purpose:document.getElementById('vpurpose').value.trim()||null
+  };
+  if(!payload.display_name||!payload.epc){alert('Visitor name and EPC are required.');return;}
+  try{
+    await apiFetch('/api/visitors/check-in',{method:'POST',body:JSON.stringify(payload)});
+    ['vname','vepc','vbadge','vhost','vpurpose'].forEach(id=>document.getElementById(id).value='');
+    loadVisitors();
+  }catch(e){alert('Check-in failed: '+e.message);}
+}
+
+async function checkOutVisitor(visitorId){
+  try{
+    await apiFetch(`/api/visitors/${visitorId}/check-out`,{method:'POST'});
+    loadVisitors();
+  }catch(e){alert('Check-out failed: '+e.message);}
+}
+
+async function loadSessions(){
+  try{
+    const data=await api('/api/sessions?limit=50');const reads=data.map(s=>s.total_reads||0);
+    document.getElementById('sc').textContent=data.length;
+    document.getElementById('sr').textContent=reads.reduce((a,b)=>a+b,0).toLocaleString();
+    const mr=Math.max(...reads,0);const ps=data.find(s=>s.total_reads===mr);
+    document.getElementById('sp').textContent=mr.toLocaleString();document.getElementById('spl').textContent=ps?.session_id||'';
+    document.getElementById('sm').textContent=Math.max(...data.map(s=>s.unique_tags||0),0);
+    if(sessCh)sessCh.destroy();
+    sessCh=new Chart(document.getElementById('sC'),{type:'bar',data:{labels:data.map(s=>s.session_id),datasets:[{data:reads,backgroundColor:data.map(s=>s.reader_type?.includes('Impinj')?'#378ADD':'#639922'),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9},maxRotation:45}}}}});
+    const iR=data.filter(s=>s.reader_type?.includes('Impinj')).reduce((a,s)=>a+(s.total_reads||0),0);
+    const mR=data.filter(s=>!s.reader_type?.includes('Impinj')).reduce((a,s)=>a+(s.total_reads||0),0);
+    if(readCh)readCh.destroy();
+    readCh=new Chart(document.getElementById('rC'),{type:'doughnut',data:{labels:['Impinj R700 (Fixed)','Zebra MC3300R (Handheld)'],datasets:[{data:[iR,mR],backgroundColor:['#378ADD','#639922'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+    document.getElementById('slog').innerHTML=[...data].reverse().map(s=>`<div class="sitem"><div class="sdot" style="background:${s.reader_type?.includes('Impinj')?'#185FA5':'#639922'}"></div><div style="flex:1"><div style="font-size:13px;font-weight:500">${s.session_id} — ${s.session_type}</div><div style="font-size:11px;color:var(--sec);margin-top:2px">${s.scan_date} · ${s.reader_type} · ${s.zone_covered} · ${s.unique_tags} tags · ${(s.total_reads||0).toLocaleString()} reads</div><div style="font-size:11px;color:var(--hint);margin-top:1px">${s.notes||''}</div></div></div>`).join('');
+  }catch(e){console.warn(e);}
+}
+
+async function doVerify(){
+  const epc=document.getElementById('ei').value.trim().toUpperCase();if(!epc)return;
+  const el=document.getElementById('vres');el.style.display='block';el.innerHTML='<div style="color:var(--sec);font-size:13px">Verifying...</div>';el.className='vres';
+  try{
+    const d=await api(`/api/assets/epc/${encodeURIComponent(epc)}`);
+    const cls={MATCHED:'vrm',MISMATCH:'vrmm',UNKNOWN:'vru',DUPLICATE:'vrm'}[d.verification_status]||'vru';
+    el.className='vres '+cls;el.style.display='block';
+    if(d.found&&d.asset){
+      const a=d.asset;
+      el.innerHTML=`<div style="font-size:14px;font-weight:600;margin-bottom:10px">${d.verification_status==='MISMATCH'?'⚠ Zone mismatch':'✓ Tag verified — found in DB1'}</div><div class="vg"><span class="vk">Record ID</span><span class="vv">${a.record_id}</span><span class="vk">Asset name</span><span class="vv">${a.asset_name}</span><span class="vk">EPC</span><span class="vv mono">${a.epc}</span><span class="vk">Tag ID</span><span class="vv">${a.tag_id}</span><span class="vk">Zone</span><span class="vv">Zone ${a.zone_code} — ${a.zone_name}</span><span class="vk">Location</span><span class="vv">${a.component_location}</span><span class="vk">Category</span><span class="vv">${a.category}</span><span class="vk">Status</span><span class="vv">${a.status}</span><span class="vk">Manufacturer</span><span class="vv">${a.manufacturer||'—'}</span><span class="vk">Model</span><span class="vv">${a.model||'—'}</span><span class="vk">Last scanned</span><span class="vv">${a.scan_date} ${a.scan_time}</span><span class="vk">RSSI</span><span class="vv">${a.rssi_dbm} dBm (${a.signal_quality})</span>${a.comments?`<span class="vk">Notes</span><span class="vv">${a.comments}</span>`:''}</div>${d.verification_status==='MISMATCH'?`<div style="margin-top:10px;font-size:12px;color:var(--red);font-weight:500">${d.message}</div>`:''}`;
+    }else{
+      el.innerHTML=`<div style="font-size:14px;font-weight:600;margin-bottom:8px">EPC not found in DB1</div><div style="font-size:13px">EPC <code style="font-family:monospace">${epc}</code> is not in the master database. It may be an unregistered tag, stray read, or needs to be added to DB1.</div>`;
+    }
+  }catch(e){el.className='vres vru';el.innerHTML=`<div style="font-size:14px;font-weight:600">Error</div><div>${e.message}</div>`;}
+}
+function sv(epc){document.getElementById('ei').value=epc;doVerify();}
+function clearV(){document.getElementById('ei').value='';document.getElementById('vres').style.display='none';}
+
+async function simScan(){
+  const epc=document.getElementById('sepc').value.trim().toUpperCase();
+  const zone=document.getElementById('szone').value;const rssi=parseInt(document.getElementById('srssi').value)||-55;const ant=parseInt(document.getElementById('sant').value)||1;
+  if(!epc){alert('Enter an EPC first');return;}
+  const now=new Date();
+  try{await fetch(`${API}/api/scans`,{method:'POST',headers:{'Content-Type':'application/json','X-Scanner-Key':'rfid-scanner-secret-key'},body:JSON.stringify({epc,scanned_zone:zone,rssi_dbm:rssi,antenna_id:ant,read_count:3,reader_id:'mc3300r-lab01',source:'scanner',scan_date:now.toISOString().split('T')[0],scan_time:now.toTimeString().split(' ')[0]})});}
+  catch(e){alert('Error: '+e.message);}
+}
+function fsim(epc,zone){document.getElementById('sepc').value=epc;document.getElementById('szone').value=zone;}
+
+async function uploadCSV(input,rid){
+  const file=input.files[0];if(!file)return;
+  const el=document.getElementById(rid);el.innerHTML='<div style="font-size:13px;color:var(--sec)">Uploading and parsing...</div>';
+  const fd=new FormData();fd.append('file',file);
+  try{
+    const res=await fetch(`${API}/api/scans/bulk`,{method:'POST',body:fd});const d=await res.json();
+    const fmt=file.name.startsWith('RFID_')?'<span class="fz">Zebra</span>':file.name.startsWith('Impinj_')?'<span class="fi">Impinj</span>':'';
+    el.innerHTML=`<div style="background:var(--gl);border:1px solid #97C459;border-radius:6px;padding:12px;font-size:13px">✓ ${fmt} <strong>${d.imported} scans imported</strong> from <em>${file.name}</em>${d.errors?.length?`<br><span style="color:var(--red)">Errors: ${d.errors[0]}</span>`:''}</div>`;
+    dbd();
+  }catch(e){el.innerHTML=`<div style="background:var(--rl);border:1px solid #F09595;border-radius:6px;padding:12px;font-size:13px">Error: ${e.message}</div>`;}
+  input.value='';
+}
+
+async function loadDrive(){
+  try{
+    const d=await api('/api/drive/status');
+    document.getElementById('dt').textContent=d.connected?`Google Drive connected — ${d.account}`:'Google Drive not connected';
+    document.getElementById('ds').textContent=d.connected?`Polling every 30s · Zebra Scans + ItemTest Scans`:'Click Connect / Reconnect';
+    document.getElementById('dfiles').textContent=d.total_files_synced;
+    document.getElementById('dscans').textContent=d.total_scans_imported;
+    document.getElementById('dlast').textContent=d.last_sync?new Date(d.last_sync).toLocaleString():'Never';
+  }catch(e){}
+}
+async function triggerSync(){
+  const btn=document.getElementById('sbtn');btn.textContent='Syncing…';btn.disabled=true;
+  try{const d=await apiFetch('/api/drive/sync',{method:'POST'});alert(d.message);loadDrive();dbd();}
+  catch(e){alert('Sync error: '+e.message);}finally{btn.textContent='Sync now';btn.disabled=false;}
+}
+async function connectDrive(){
+  try{const d=await apiFetch('/api/drive/connect',{method:'POST'});alert(d.message);loadDrive();}
+  catch(e){alert('Error: '+e.message);}
+}
+
+
+function showUserMessage(title,msg,type='ok'){
+  if(typeof notify==='function')notify(type,title,msg,5000);
+  else alert(`${title}: ${msg}`);
+}
+function currentAssetQuery(){
+  const p=new URLSearchParams();
+  const q=document.getElementById('aq')?.value.trim();
+  const z=document.getElementById('azn')?.value;
+  const c=document.getElementById('acat')?.value;
+  const s=document.getElementById('ast')?.value;
+  if(q)p.set('q',q);if(z)p.set('zone',z);if(c)p.set('category',c);if(s)p.set('status',s);
+  const sort=document.getElementById('asort')?.value,dir=document.getElementById('adir')?.value;if(sort)p.set('sort_by',sort);if(dir)p.set('sort_dir',dir);
+  return p.toString();
+}
+function currentScanQuery(){
+  const p=new URLSearchParams();
+  const q=document.getElementById('iq')?.value.trim();
+  const st=document.getElementById('istat')?.value;
+  const z=document.getElementById('izone')?.value;
+  const src=document.getElementById('isrc')?.value;
+  if(q)p.set('q',q);if(st)p.set('status',st);if(z)p.set('zone',z);if(src)p.set('source',src);
+  const sort=document.getElementById('isort')?.value,dir=document.getElementById('idir')?.value;if(sort)p.set('sort_by',sort);if(dir)p.set('sort_dir',dir);
+  return p.toString();
+}
+function downloadAssetsCSV(){
+  const qs=currentAssetQuery();
+  window.location.href=`${API}/api/assets/export/csv${qs?'?'+qs:''}`;
+}
+function downloadScansCSV(){
+  const qs=currentScanQuery();
+  window.location.href=`${API}/api/scans/export/csv${qs?'?'+qs:''}`;
+}
+async function seedNaloxoneKits(){
+  try{
+    const d=await apiFetch('/api/assets/naloxone-demo',{method:'POST'});
+    showUserMessage('Naloxone kits ready',d.message,'ok');
+    document.getElementById('acat').value='naloxone-kit';
+    aPage=0;
+    loadAssets();
+    dbd();
+  }catch(e){showUserMessage('Naloxone setup failed',e.message,'error');}
+}
+
+async function api(url){const r=await fetch(API+url);if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();}
+async function apiFetch(url,opts){const r=await fetch(API+url,{headers:{'Content-Type':'application/json'},...opts});if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json();}
+
+function buildPag(id,cur,hm,onClick){
+  const el=document.getElementById(id);el.innerHTML='';
+  if(cur>0){const b=document.createElement('button');b.className='pb';b.textContent='← Prev';b.onclick=()=>onClick(cur-1);el.appendChild(b);}
+  const c=document.createElement('button');c.className='pb on';c.textContent=cur+1;el.appendChild(c);
+  if(hm){const b=document.createElement('button');b.className='pb';b.textContent='Next →';b.onclick=()=>onClick(cur+1);el.appendChild(b);}
+}
+function animV(id,to){
+  const el=document.getElementById(id);if(!el)return;const from=parseInt(el.textContent)||0;if(from===to){el.textContent=to;return;}
+  let s=0;const t=setInterval(()=>{s++;el.textContent=Math.round(from+(to-from)*s/20);if(s>=20){clearInterval(t);el.textContent=to;}},400/20);
+}
+function sb(s){return{Active:'ba',Available:'bav','Under Test':'bt2',Cycling:'bc',Charging:'bch','Need to Stock Up':'bst'}[s]||'bp';}
+function cb(c){return{'naloxone-kit':'bnal','battery-cell':'bbat',equipment:'beq',inventory:'binv'}[c]||'bp';}
+function vb(v){return{MATCHED:'bm',MISMATCH:'bmm',DUPLICATE:'bd',UNKNOWN:'bu',PENDING:'bp'}[v]||'bp';}
+function srcCls(s){return{zebra_drive:'sz',impinj_drive:'si',scanner:'bav',mqtt:'bt2',csv_upload:'si',manual:'bp'}[s]||'bp';}
+function srcLbl(s){return{zebra_drive:'Zebra',impinj_drive:'Impinj',scanner:'Scanner',mqtt:'MQTT',csv_upload:'CSV',manual:'Manual'}[s]||s||'—';}
+
+async function seedKeyItems(){
+  try{
+    const d=await apiFetch('/api/assets/key-demo-items',{method:'POST'});
+    showUserMessage('Key demo items ready',d.message,'ok');
+    document.getElementById('aq').value='ITEM Battery 1';
+    aPage=0;loadAssets();dbd();
+  }catch(e){showUserMessage('Key item setup failed',e.message,'error');}
+}
+async function reviewUnmappedTags(){
+  try{
+    const data=await api('/api/assets/unmapped-tags?limit=8');
+    const msg=data.length?data.map(x=>`${x.epc.substring(0,18)}… (${x.read_events} reads) ${x.likely_demo_e280?'E280 demo/test':'review'}`).join('\n'):'No unmapped tags found.';
+    alert('Unmapped tag review:\n'+msg+'\n\nUse Export Unmapped Tags CSV from backend: /api/assets/unmapped-tags/export/csv');
+  }catch(e){alert('Could not load unmapped tags: '+e.message);}
+}
+function confCls(v){if(v==null)return 'bp'; if(v>=.78)return 'bm'; if(v>=.55)return 'bd'; return 'bmm';}
+
+function refreshPage(){const a=document.querySelector('.page.active')?.id?.replace('page-','');if(a==='dashboard')loadDash();else if(a==='assets')loadAssets();else if(a==='incoming')loadIncoming();else if(a==='visitors')loadVisitors();else if(a==='sessions')loadSessions();else if(a==='zones'){loadZCards();loadZoneCurrent();loadZD();}else if(a==='drive')loadDrive();}
+
+setInterval(async()=>{try{const r=await api('/api/assets/count');const el=document.getElementById('m0');if(el&&r.count!==parseInt(el.textContent))animV('m0',r.count);}catch(e){}},60000);
+
+connectWS();
+loadDash();
+</script>
+</body>
+</html>

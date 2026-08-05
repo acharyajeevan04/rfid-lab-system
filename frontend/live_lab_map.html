@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RFID Lab System — Live Lab Map</title>
+<style>
+:root{
+  --bg:#f6f8fb;
+  --panel:#ffffff;
+  --panel2:#f8fafc;
+  --line:#e5e7eb;
+  --line2:#d7dde6;
+  --text:#111827;
+  --muted:#6b7280;
+  --hint:#9ca3af;
+  --blue:#0b66c3;
+  --blue2:#e7f0fb;
+  --green:#16a34a;
+  --green2:#dcfce7;
+  --red:#dc2626;
+  --red2:#fee2e2;
+  --amber:#d97706;
+  --amber2:#fef3c7;
+  --purple:#7c3aed;
+  --shadow:0 10px 28px rgba(15,23,42,.08);
+  --radius:14px;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;overflow:hidden}
+.app{height:100%;display:grid;grid-template-columns:238px 1fr;background:var(--bg)}
+.side{background:#f8fafc;border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.brand{height:90px;padding:22px 20px;border-bottom:1px solid var(--line)}
+.brand h1{margin:0;font-size:18px;font-weight:750;letter-spacing:.1px}
+.live{margin-top:8px;color:var(--muted);font-size:13px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px rgba(22,163,74,.12)}
+.nav{padding:14px 0;display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--muted);padding:12px 20px;border-left:3px solid transparent;font-weight:600}
+.nav a.active{color:var(--blue);background:var(--blue2);border-left-color:var(--blue)}
+.nav a:hover{background:#eef4fb;color:var(--blue)}
+.foot{margin-top:auto;padding:16px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.main{display:grid;grid-template-rows:72px 1fr;min-width:0;overflow:hidden}
+.top{background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 24px;gap:18px}
+.title{min-width:0}
+.title h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.title p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-weight:650;color:#334155}
+.pill .mini{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.actions{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line2);background:var(--panel);border-radius:10px;padding:9px 13px;font-weight:700;color:#1f2937;cursor:pointer}
+.btn:hover{border-color:#b8c3d2;box-shadow:0 2px 8px rgba(15,23,42,.08)}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.active{background:var(--blue2);border-color:#bfdbfe;color:var(--blue)}
+.content{display:grid;grid-template-columns:minmax(620px,1fr) 390px;gap:16px;padding:16px;overflow:hidden}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;min-width:0}
+.card-head{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#fbfdff)}
+.card-head h3{margin:0;font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:#374151}
+.card-meta{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.map-card{display:grid;grid-template-rows:52px 1fr 150px;min-height:0}
+.map-wrap{position:relative;background:
+  linear-gradient(#eef2f7 1px, transparent 1px) 0 0/34px 34px,
+  linear-gradient(90deg,#eef2f7 1px, transparent 1px) 0 0/34px 34px,
+  #f9fbff;
+  overflow:hidden
+}
+svg{width:100%;height:100%;display:block}
+.zone{fill:#fff;stroke:#a8b5c6;stroke-width:2;stroke-dasharray:8 7;rx:12;filter:drop-shadow(0 8px 14px rgba(15,23,42,.05))}
+.zone.active{stroke:var(--blue);fill:#eff6ff}
+.zone.storage{stroke:var(--amber);fill:#fffbeb}
+.zone-label{font-size:14px;font-weight:800;fill:#1f2937;text-transform:uppercase;letter-spacing:.08em}
+.zone-id{font-size:11px;fill:#6b7280;font-family:var(--mono)}
+.path{fill:none;stroke:#cbd5e1;stroke-width:2;stroke-dasharray:10 10;opacity:.9}
+.antenna{fill:#1f2937;stroke:var(--amber);stroke-width:2}
+.ant-ring{fill:none;stroke:var(--amber);stroke-width:1;opacity:.35}
+.ant-label{font-family:var(--mono);font-size:10px;font-weight:800;fill:#b45309}
+.item-dot{transition:cx .55s ease,cy .55s ease,r .2s ease;filter:drop-shadow(0 8px 10px rgba(0,0,0,.22));cursor:pointer}
+.item-label{font-family:var(--mono);font-size:10px;font-weight:800;pointer-events:none;fill:#111827;text-shadow:0 1px 0 white}
+.item-sub{font-family:var(--mono);font-size:9px;fill:#475569;pointer-events:none;text-shadow:0 1px 0 white}
+.compass circle{fill:#fff;stroke:#d1d5db}
+.compass line{stroke:#94a3b8}
+.compass text{font-family:var(--mono);font-size:11px;font-weight:900;fill:#475569;text-anchor:middle}
+.live-log{border-top:1px solid var(--line);background:#fff;overflow:auto}
+.log-table{width:100%;border-collapse:collapse;font-size:12px}
+.log-table th{position:sticky;top:0;background:#f8fafc;color:#6b7280;text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.log-table td{padding:8px 12px;border-bottom:1px solid #f1f5f9;white-space:nowrap}
+.log-table td.epc{font-family:var(--mono);max-width:260px;overflow:hidden;text-overflow:ellipsis}
+.status{display:inline-flex;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:800}
+.status.MATCHED{background:var(--green2);color:#166534}
+.status.UNKNOWN{background:#f3f4f6;color:#4b5563}
+.status.MISMATCH{background:var(--amber2);color:#92400e}
+.status.DENIED,.status.ERROR{background:var(--red2);color:#991b1b}
+.side-panel{display:grid;grid-template-rows:auto 1fr auto;gap:16px;min-height:0}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px}
+.metric{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.metric .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}
+.metric .v{margin-top:5px;font-size:22px;font-weight:850}
+.list{overflow:auto;min-height:0}
+.item-card{padding:12px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+.item-card:hover,.item-card.selected{background:#f8fbff}
+.item-card.selected{box-shadow:inset 4px 0 0 var(--blue)}
+.item-title{display:flex;align-items:center;gap:8px;min-width:0}
+.swatch{width:12px;height:12px;border-radius:50%;flex:0 0 auto}
+.item-name{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item-zone{margin-left:auto;font-size:11px;font-weight:800;padding:3px 7px;border-radius:999px;background:var(--blue2);color:var(--blue)}
+.item-row{display:grid;grid-template-columns:64px 1fr;gap:8px;margin-top:5px;font-size:11px;font-family:var(--mono)}
+.item-row .k{color:var(--hint);text-transform:uppercase}
+.item-row .v{color:#374151;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reader-card{padding:12px 14px;border-top:1px solid var(--line);background:#fbfdff}
+.reader-row{display:flex;justify-content:space-between;margin:5px 0;font-size:12px}
+.reader-row b{font-family:var(--mono)}
+.toast{position:fixed;right:20px;top:88px;background:#111827;color:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 20px 40px rgba(0,0,0,.25);z-index:50;display:none;max-width:380px}
+.toast.show{display:block;animation:pop .2s ease}
+@keyframes pop{from{transform:translateY(-8px);opacity:0}to{transform:translateY(0);opacity:1}}
+.empty{padding:18px;color:var(--muted);font-size:13px}
+@media(max-width:1100px){.app{grid-template-columns:0 1fr}.side{display:none}.content{grid-template-columns:1fr}.side-panel{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <h1>RFID Lab System</h1>
+      <div class="live"><span class="dot"></span><span id="connectionState">Connecting...</span></div>
+    </div>
+    <nav class="nav">
+      <a href="/static/index.html">▦ Dashboard</a>
+      <a class="active" href="/static/live_lab_map.html">⌁ Live Lab Map</a>
+      <a href="/static/index.html#asset-table">▣ Asset Table</a>
+      <a href="/static/index.html#incoming-scans">↓ Incoming Scans</a>
+      <a href="/static/index.html#google-drive">▱ Google Drive</a>
+    </nav>
+    <div class="foot">
+      SEARLab UTA · Live map<br>
+      DB1 Master Table + DB2 Scan Events
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <div class="title">
+        <h2>Live Lab Map</h2>
+        <p>Whiteboard-style RFID zone view · EPC resolves to item name from Master Table</p>
+      </div>
+      <div class="pill"><span class="mini"></span><span id="syncState">Live</span></div>
+      <div class="actions">
+        <button class="btn" id="btnRefresh">↻ Refresh</button>
+        <button class="btn active" id="btnMatched">Matched only</button>
+        <button class="btn" id="btnTrails">Trails on</button>
+        <button class="btn primary" id="btnExport">Export CSV</button>
+      </div>
+    </header>
+
+    <section class="content">
+      <section class="card map-card">
+        <div class="card-head">
+          <h3>Floor Plan / Live Position</h3>
+          <div class="card-meta">Door · Conveyor · Front North · Back South / Storage</div>
+        </div>
+
+        <div class="map-wrap">
+          <svg id="mapSvg" viewBox="0 0 960 620" preserveAspectRatio="xMidYMid meet">
+            <path class="path" d="M90 100 Q210 70 340 128 T545 158 Q715 150 815 242 Q890 315 850 420 Q790 555 560 540 Q335 530 230 470 Q115 405 125 298 Z"/>
+            <path class="path" d="M310 200 Q390 245 450 285 T560 340"/>
+
+            <rect id="zone-A" class="zone" x="70" y="70" width="250" height="150" rx="12"/>
+            <text class="zone-label" x="96" y="108">Door</text>
+            <text class="zone-id" x="96" y="130">ZONE A · Entry / Hall</text>
+
+            <rect id="zone-B" class="zone" x="350" y="230" width="190" height="130" rx="12"/>
+            <text class="zone-label" x="376" y="268">Conveyor</text>
+            <text class="zone-id" x="376" y="290">ZONE B · Test line</text>
+
+            <rect id="zone-C" class="zone" x="575" y="100" width="265" height="185" rx="12"/>
+            <text class="zone-label" x="600" y="140">Front North</text>
+            <text class="zone-id" x="600" y="162">ZONE C · Front shelf</text>
+
+            <rect id="zone-D" class="zone storage" x="112" y="405" width="300" height="150" rx="12"/>
+            <text class="zone-label" x="138" y="443">Back South</text>
+            <text class="zone-id" x="138" y="465">ZONE D · Storage area</text>
+
+            <g class="compass" transform="translate(890,92)">
+              <circle r="34"></circle>
+              <line x1="0" y1="-27" x2="0" y2="27"></line>
+              <line x1="-27" y1="0" x2="27" y2="0"></line>
+              <text x="0" y="-16" style="fill:#0b66c3">N</text>
+              <text x="0" y="24">S</text>
+              <text x="-19" y="4">W</text>
+              <text x="19" y="4">E</text>
+            </g>
+
+            <g id="trailLayer"></g>
+            <g id="antennaLayer"></g>
+            <g id="itemLayer"></g>
+          </svg>
+        </div>
+
+        <div class="live-log">
+          <table class="log-table">
+            <thead><tr><th>Time</th><th>Status</th><th>Item</th><th>EPC</th><th>Zone</th><th>RSSI</th><th>Reader</th></tr></thead>
+            <tbody id="logBody"><tr><td colspan="7" class="empty">Waiting for scan data...</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="card">
+          <div class="card-head"><h3>Live Summary</h3><div class="card-meta" id="lastUpdated">—</div></div>
+          <div class="metrics">
+            <div class="metric"><div class="k">Mapped Items</div><div class="v" id="mMapped">0</div></div>
+            <div class="metric"><div class="k">Latest Scans</div><div class="v" id="mScans">0</div></div>
+            <div class="metric"><div class="k">Matched</div><div class="v" id="mMatched">0</div></div>
+            <div class="metric"><div class="k">Unknown</div><div class="v" id="mUnknown">0</div></div>
+          </div>
+        </section>
+
+        <section class="card" style="min-height:0;display:flex;flex-direction:column">
+          <div class="card-head"><h3>Tag Inventory</h3><div class="card-meta">Click item to focus</div></div>
+          <div class="list" id="itemList"><div class="empty">Loading master table...</div></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head"><h3>Reader Network</h3><div class="card-meta">4 Antenna Zones</div></div>
+          <div class="reader-card">
+            <div class="reader-row"><span>ANT-01</span><b>Zone A / Door</b></div>
+            <div class="reader-row"><span>ANT-02</span><b>Zone B / Conveyor</b></div>
+            <div class="reader-row"><span>ANT-03</span><b>Zone C / Front North</b></div>
+            <div class="reader-row"><span>ANT-04</span><b>Zone D / Back South</b></div>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = "";
+const NS = "http://www.w3.org/2000/svg";
+const COLORS = ["#2563eb","#16a34a","#d97706","#7c3aed","#dc2626","#0891b2","#be123c","#4f46e5","#65a30d","#c2410c"];
+const ZONES = {
+  A:{id:"A",name:"Door",x:70,y:70,w:250,h:150,ant:"ANT-01"},
+  B:{id:"B",name:"Conveyor",x:350,y:230,w:190,h:130,ant:"ANT-02"},
+  C:{id:"C",name:"Front North",x:575,y:100,w:265,h:185,ant:"ANT-03"},
+  D:{id:"D",name:"Back South",x:112,y:405,w:300,h:150,ant:"ANT-04"},
+  "?":{id:"?",name:"Unknown",x:438,y:455,w:100,h:80,ant:"—"}
+};
+const ANTENNAS = [
+  {id:"ANT-01",zone:"A",x:195,y:145},
+  {id:"ANT-02",zone:"B",x:445,y:295},
+  {id:"ANT-03",zone:"C",x:708,y:192},
+  {id:"ANT-04",zone:"D",x:262,y:480},
+];
+
+let assets = [];
+let scans = [];
+let state = new Map();
+let selectedEpc = null;
+let matchedOnly = true;
+let trailsOn = true;
+
+function esc(v){return String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function normEpc(v){return String(v ?? "").trim().toUpperCase();}
+function pick(obj, keys, fallback=""){for(const k of keys){if(obj && obj[k]!==undefined && obj[k]!==null && obj[k]!=="")return obj[k];}return fallback;}
+function apiItems(data){return Array.isArray(data)?data:(data.items||data.assets||data.data||data.results||[]);}
+function zoneCode(v){
+  const z = String(v ?? "").trim().toUpperCase();
+  if(!z) return "?";
+  if(z.includes("DOOR") || z.includes("ENTRY")) return "A";
+  if(z.includes("CONVEYOR")) return "B";
+  if(z.includes("FRONT") || z.includes("NORTH")) return "C";
+  if(z.includes("BACK") || z.includes("SOUTH") || z.includes("STORAGE")) return "D";
+  if(["A","B","C","D"].includes(z)) return z;
+  if(z.startsWith("ZONE ")) return zoneCode(z.replace("ZONE ",""));
+  return "?";
+}
+function zonePoint(z, i=0){
+  const zone = ZONES[z] || ZONES["?"];
+  const cols = 5;
+  const row = Math.floor(i / cols);
+  const col = i % cols;
+  return {
+    x: zone.x + 30 + ((col + .5) / cols) * Math.max(40, zone.w - 60),
+    y: zone.y + 35 + ((row + .5) / 4) * Math.max(40, zone.h - 70)
+  };
+}
+function statusClass(s){return String(s||"UNKNOWN").toUpperCase();}
+function showToast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),3200);
+}
+async function fetchJson(url){
+  const r = await fetch(url);
+  if(!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+  return await r.json();
+}
+async function loadAssets(){
+  const queries = ["/api/assets?limit=1000", "/api/assets"];
+  for(const q of queries){
+    try{
+      const d = await fetchJson(q);
+      assets = apiItems(d);
+      return;
+    }catch(e){}
+  }
+  assets = [];
+}
+async function loadScans(){
+  const queries = ["/api/scans?limit=100&sort_by=scan_id&sort_dir=desc", "/api/scans?limit=100", "/api/scans"];
+  for(const q of queries){
+    try{
+      const d = await fetchJson(q);
+      scans = apiItems(d);
+      return;
+    }catch(e){}
+  }
+  scans = [];
+}
+function assetByEpc(epc){
+  const n = normEpc(epc);
+  return assets.find(a => normEpc(pick(a,["epc","EPC"])) === n);
+}
+function scanToItem(scan){
+  const epc = normEpc(pick(scan,["epc","EPC"]));
+  const asset = assetByEpc(epc) || {};
+  const name = pick(scan,["matched_asset_name","asset_name","asset","item_name"], "") || pick(asset,["asset_name","item_name","name"], "— Not in Master Table —");
+  const sku = pick(scan,["sku","SKU"], "") || pick(asset,["sku","SKU","tag_id"], "");
+  const gtin = pick(scan,["gtin","GTIN"], "") || pick(asset,["gtin","GTIN"], "");
+  const z = zoneCode(pick(scan,["scanned_zone","zone","zone_code","assigned_zone"], "") || pick(asset,["zone_code","zone","assigned_zone"], ""));
+  const status = statusClass(pick(scan,["verification_status","status"], asset.epc ? "MATCHED" : "UNKNOWN"));
+  return {
+    epc, name, sku, gtin, zone:z, status,
+    rssi: pick(scan,["rssi_dbm","rssi","RSSI"], ""),
+    reader: pick(scan,["reader_id","reader","source"], ""),
+    time: pick(scan,["scan_time","time","timestamp"], ""),
+    date: pick(scan,["scan_date","date"], ""),
+    source: pick(scan,["source"], "")
+  };
+}
+function buildState(){
+  state.clear();
+  const latest = [];
+  scans.forEach((s,idx)=>{
+    const item = scanToItem(s);
+    if(!item.epc) return;
+    if(matchedOnly && item.status !== "MATCHED") return;
+    if(!state.has(item.epc)){
+      item.color = COLORS[state.size % COLORS.length];
+      item.index = state.size;
+      item.raw = s;
+      item.trail = [];
+      state.set(item.epc,item);
+      latest.push(item);
+    }
+  });
+  if(state.size === 0){
+    assets.slice(0,50).forEach((a,idx)=>{
+      const epc = normEpc(pick(a,["epc","EPC"]));
+      if(!epc) return;
+      const z = zoneCode(pick(a,["zone_code","zone","assigned_zone","location"], ""));
+      state.set(epc,{
+        epc,
+        name:pick(a,["asset_name","item_name","name"],"Unnamed item"),
+        sku:pick(a,["sku","tag_id"],""),
+        gtin:pick(a,["gtin"],""),
+        zone:z,
+        status:"MATCHED",
+        rssi:"",
+        reader:"",
+        time:"",
+        date:"",
+        color:COLORS[idx % COLORS.length],
+        index:idx,
+        trail:[]
+      });
+    });
+  }
+}
+function drawAntennas(){
+  const g=document.getElementById("antennaLayer");g.innerHTML="";
+  ANTENNAS.forEach(a=>{
+    for(let r=24;r<=72;r+=24){
+      const c=document.createElementNS(NS,"circle");
+      c.setAttribute("class","ant-ring");c.setAttribute("cx",a.x);c.setAttribute("cy",a.y);c.setAttribute("r",r);
+      g.appendChild(c);
+    }
+    const body=document.createElementNS(NS,"rect");
+    body.setAttribute("class","antenna");
+    body.setAttribute("x",a.x-9);body.setAttribute("y",a.y-9);body.setAttribute("width",18);body.setAttribute("height",18);
+    body.setAttribute("transform",`rotate(45 ${a.x} ${a.y})`);
+    g.appendChild(body);
+    const t=document.createElementNS(NS,"text");
+    t.setAttribute("class","ant-label");t.setAttribute("x",a.x+16);t.setAttribute("y",a.y-10);t.textContent=a.id;
+    g.appendChild(t);
+  });
+}
+function drawItems(){
+  document.querySelectorAll(".zone").forEach(z=>z.classList.remove("active"));
+  const layer=document.getElementById("itemLayer");
+  const trail=document.getElementById("trailLayer");
+  layer.innerHTML="";trail.innerHTML="";
+  const zoneCounts = {};
+  Array.from(state.values()).forEach((it)=>{
+    zoneCounts[it.zone]=(zoneCounts[it.zone]||0)+1;
+    const p = zonePoint(it.zone, zoneCounts[it.zone]-1);
+    it.x=p.x;it.y=p.y;
+    const zr=document.getElementById(`zone-${it.zone}`); if(zr) zr.classList.add("active");
+
+    if(trailsOn && it.trail && it.trail.length>1){
+      const path=document.createElementNS(NS,"path");
+      path.setAttribute("d",it.trail.map((q,i)=>`${i?"L":"M"} ${q.x} ${q.y}`).join(" "));
+      path.setAttribute("fill","none");path.setAttribute("stroke",it.color);path.setAttribute("stroke-width","2");path.setAttribute("opacity",".28");
+      trail.appendChild(path);
+    }
+
+    const c=document.createElementNS(NS,"circle");
+    c.setAttribute("class","item-dot");
+    c.setAttribute("cx",p.x);c.setAttribute("cy",p.y);c.setAttribute("r",selectedEpc===it.epc?13:9);
+    c.setAttribute("fill",it.color);c.setAttribute("stroke","#fff");c.setAttribute("stroke-width","2");
+    c.onclick=()=>selectItem(it.epc);
+    layer.appendChild(c);
+
+    const name=document.createElementNS(NS,"text");
+    name.setAttribute("class","item-label");name.setAttribute("x",p.x+14);name.setAttribute("y",p.y-2);
+    name.textContent=(it.name||"Item").slice(0,22);
+    layer.appendChild(name);
+
+    const sub=document.createElementNS(NS,"text");
+    sub.setAttribute("class","item-sub");sub.setAttribute("x",p.x+14);sub.setAttribute("y",p.y+12);
+    sub.textContent=`${it.sku || it.epc.slice(-8)} · Zone ${it.zone}`;
+    layer.appendChild(sub);
+  });
+}
+function renderList(){
+  const list=document.getElementById("itemList");
+  const items=Array.from(state.values());
+  if(!items.length){list.innerHTML='<div class="empty">No mapped items found.</div>';return;}
+  list.innerHTML=items.map(it=>`
+    <div class="item-card ${selectedEpc===it.epc?'selected':''}" onclick="selectItem('${esc(it.epc)}')">
+      <div class="item-title">
+        <span class="swatch" style="background:${it.color}"></span>
+        <span class="item-name">${esc(it.name)}</span>
+        <span class="item-zone">Zone ${esc(it.zone)}</span>
+      </div>
+      <div class="item-row"><span class="k">EPC</span><span class="v">${esc(it.epc)}</span></div>
+      <div class="item-row"><span class="k">SKU</span><span class="v">${esc(it.sku || "—")}</span></div>
+      <div class="item-row"><span class="k">GTIN</span><span class="v">${esc(it.gtin || "—")}</span></div>
+      <div class="item-row"><span class="k">Status</span><span class="v">${esc(it.status)}</span></div>
+    </div>`).join("");
+}
+function renderLog(){
+  const body=document.getElementById("logBody");
+  const rows=scans.slice(0,40).map(scanToItem).filter(it=>it.epc && (!matchedOnly || it.status==="MATCHED"));
+  if(!rows.length){body.innerHTML='<tr><td colspan="7" class="empty">No scan events to show.</td></tr>';return;}
+  body.innerHTML=rows.map(it=>`
+    <tr>
+      <td>${esc(it.time || it.date || "—")}</td>
+      <td><span class="status ${esc(it.status)}">${esc(it.status)}</span></td>
+      <td>${esc(it.name)}</td>
+      <td class="epc">${esc(it.epc)}</td>
+      <td>Zone ${esc(it.zone)}</td>
+      <td>${esc(it.rssi || "—")}</td>
+      <td>${esc(it.reader || it.source || "—")}</td>
+    </tr>`).join("");
+}
+function renderMetrics(){
+  const rows=scans.map(scanToItem);
+  document.getElementById("mMapped").textContent=assets.filter(a=>pick(a,["epc","EPC"])).length;
+  document.getElementById("mScans").textContent=scans.length;
+  document.getElementById("mMatched").textContent=rows.filter(r=>r.status==="MATCHED").length;
+  document.getElementById("mUnknown").textContent=rows.filter(r=>r.status==="UNKNOWN").length;
+  document.getElementById("lastUpdated").textContent=new Date().toLocaleTimeString();
+}
+function selectItem(epc){
+  selectedEpc=epc;
+  const it=state.get(epc);
+  if(it) showToast(`${it.name} · EPC ${it.epc} · Zone ${it.zone}`);
+  drawItems();renderList();
+}
+async function refreshAll(silent=false){
+  try{
+    await Promise.all([loadAssets(),loadScans()]);
+    buildState();drawItems();renderList();renderLog();renderMetrics();
+    document.getElementById("syncState").textContent="Live";
+    if(!silent) showToast("Live map refreshed");
+  }catch(e){
+    document.getElementById("syncState").textContent="Offline";
+    showToast("Refresh failed: "+e.message);
+  }
+}
+function connectWS(){
+  try{
+    const wsUrl=(location.protocol==="https:"?"wss://":"ws://")+location.host+"/ws";
+    const ws=new WebSocket(wsUrl);
+    ws.onopen=()=>{document.getElementById("connectionState").textContent="Live";};
+    ws.onclose=()=>{document.getElementById("connectionState").textContent="Reconnecting...";setTimeout(connectWS,2500);};
+    ws.onerror=()=>{document.getElementById("connectionState").textContent="Connection issue";};
+    ws.onmessage=(ev)=>{
+      try{
+        const msg=JSON.parse(ev.data);
+        const t=msg.event_type || msg.type;
+        if(["new_scan","drive_sync","scan_created","bulk_import"].includes(t)){
+          showToast(t==="drive_sync"?"Google Drive sync updated":"New RFID scan received");
+          refreshAll(true);
+        }
+      }catch(e){}
+    };
+  }catch(e){}
+}
+function exportCSV(){
+  const rows=scans.map(scanToItem);
+  const headers=["item_name","epc","sku","gtin","zone","status","rssi","reader","date","time"];
+  const csv=[headers.join(","),...rows.map(r=>headers.map(h=>`"${String(r[h]??"").replace(/"/g,'""')}"`).join(","))].join("\n");
+  const blob=new Blob([csv],{type:"text/csv"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download=`live_lab_map_${new Date().toISOString().replace(/[:.]/g,"-")}.csv`;
+  document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+}
+document.getElementById("btnRefresh").onclick=()=>refreshAll(false);
+document.getElementById("btnMatched").onclick=(e)=>{matchedOnly=!matchedOnly;e.target.classList.toggle("active",matchedOnly);refreshAll(true);};
+document.getElementById("btnTrails").onclick=(e)=>{trailsOn=!trailsOn;e.target.textContent=trailsOn?"Trails on":"Trails off";e.target.classList.toggle("active",trailsOn);drawItems();};
+document.getElementById("btnExport").onclick=exportCSV;
+
+drawAntennas();
+refreshAll(true);
+connectWS();
+setInterval(()=>refreshAll(true),30000);
+</script>
+</body>
+</html>

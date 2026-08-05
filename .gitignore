@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.env
+rfid_lab.db
+token.json
+credentials.json
+.venv/
+venv/
+dist/

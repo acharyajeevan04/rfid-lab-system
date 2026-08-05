@@ -1,0 +1,556 @@
+epc,read_events,first_seen,last_seen,strongest_rssi,likely_demo_e280,recommendation
+123456789012345678901234,10,2026-04-28 21:49:31.836996,2026-05-15 23:18:46.549615,-42,False,Review with EPC decoder and map to SKU/GTIN if real
+E200001C430102632190EB83,9,2026-04-28 21:49:31.794758,2026-05-14 19:03:42.725369,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000000102,8,2026-04-28 21:49:32.820213,2026-05-14 19:03:43.022877,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+00000000000000000A101907,8,2026-04-28 21:49:31.843328,2026-05-14 19:03:43.116557,-64,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201743A021902,8,2026-04-28 21:49:31.812406,2026-04-28 21:49:38.108997,-57,False,Review with EPC decoder and map to SKU/GTIN if real
+E2801191A503006B3ABB8751,8,2026-04-28 21:49:32.823994,2026-05-14 19:03:43.044252,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C2,8,2026-04-28 21:49:31.307606,2026-05-14 19:03:42.920649,-46,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+000000000000000000E40148,7,2026-04-28 21:49:31.806039,2026-05-14 19:03:42.839880,-61,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201556A020102,7,2026-04-28 21:49:33.375777,2026-05-14 19:03:42.746882,-31,False,Review with EPC decoder and map to SKU/GTIN if real
+E28011606000020529FC918C,7,2026-04-28 21:49:31.796201,2026-05-14 19:03:42.838332,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006540B9AD31,7,2026-04-28 21:49:33.394107,2026-05-15 23:18:56.888301,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C4,7,2026-04-28 21:49:33.422566,2026-05-15 23:18:59.607689,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C9,7,2026-04-28 21:49:33.443485,2026-05-14 19:03:42.714620,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C0,7,2026-04-28 21:49:31.311696,2026-05-14 19:03:42.911417,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C7,7,2026-04-28 21:49:33.471290,2026-05-14 19:03:42.696895,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C8,7,2026-04-28 21:49:31.310755,2026-05-14 19:03:42.735735,-48,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C5,7,2026-04-28 21:49:31.306731,2026-05-14 19:03:42.805852,-49,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+00000000000000000A101905,6,2026-04-28 21:49:34.086517,2026-05-14 19:03:43.111722,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201212A021902,6,2026-04-28 21:49:33.473057,2026-05-14 19:03:42.774751,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201610A020102,6,2026-04-28 21:49:33.390144,2026-05-14 19:03:42.889387,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201611A020802,6,2026-04-28 21:49:33.388162,2026-05-14 19:03:42.939869,-44,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201629A021102,6,2026-04-28 21:49:33.471892,2026-05-14 19:03:42.890876,-43,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201630A021802,6,2026-04-28 21:49:33.456655,2026-05-14 19:03:42.887579,-43,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201652A020102,6,2026-04-28 21:49:33.457316,2026-05-14 19:03:42.987053,-43,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201653A020802,6,2026-04-28 21:49:33.374294,2026-05-14 19:03:42.745927,-32,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201655A020902,6,2026-04-28 21:49:33.379218,2026-05-14 19:03:42.792418,-46,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201656A021002,6,2026-04-28 21:49:33.386718,2026-05-14 19:03:42.798494,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+E2801191A503006B3ABB4790,6,2026-04-28 21:49:33.462727,2026-05-14 19:03:42.711273,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4799,6,2026-04-28 21:49:33.452860,2026-05-14 19:03:42.917317,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65CF,6,2026-04-28 21:49:33.465202,2026-05-14 19:03:43.033329,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C9,6,2026-04-28 21:49:33.413328,2026-05-14 19:03:43.013301,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67CC,6,2026-04-28 21:49:33.410901,2026-05-14 19:03:43.002319,-46,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB68A1,6,2026-04-28 21:49:33.492678,2026-05-14 19:03:42.847361,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C9,6,2026-04-28 21:49:33.495990,2026-05-14 19:03:42.902283,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB869F,6,2026-04-28 21:49:31.309111,2026-05-14 19:03:43.145104,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C5,6,2026-04-28 21:49:33.467125,2026-05-14 19:03:42.906617,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C6,6,2026-04-28 21:49:33.449534,2026-05-14 19:03:42.998682,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C2,6,2026-04-28 21:49:33.470069,2026-05-14 19:03:42.904773,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C4,6,2026-04-28 21:49:33.497163,2026-05-14 19:03:42.812120,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C7,6,2026-04-28 21:49:33.450391,2026-05-14 19:03:42.712899,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C3,6,2026-04-28 21:49:33.467750,2026-05-14 19:03:42.850936,-52,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C5,6,2026-04-28 21:49:33.436160,2026-05-14 19:03:42.740727,-50,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9CE,6,2026-04-28 21:49:33.399934,2026-05-14 19:03:42.824590,-45,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8CF,6,2026-04-28 21:49:33.461471,2026-05-14 19:03:42.848348,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C9,6,2026-04-28 21:49:33.459507,2026-05-14 19:03:42.832944,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+000000000000000000000442,5,2026-04-28 21:49:33.460165,2026-05-14 19:03:42.738543,-37,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000000445,5,2026-04-28 21:49:33.442524,2026-05-14 19:03:42.700936,-42,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000001269,5,2026-04-28 21:49:33.368724,2026-05-14 19:03:43.021925,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000002957,5,2026-04-28 21:49:33.437804,2026-05-14 19:03:42.686518,-43,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000006223,5,2026-04-28 21:49:33.455922,2026-05-14 19:03:42.782341,-42,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000006582,5,2026-04-28 21:49:33.451048,2026-05-14 19:03:42.817230,-53,False,Review with EPC decoder and map to SKU/GTIN if real
+00000000000000000A101906,5,2026-04-28 21:49:35.713199,2026-05-14 19:03:43.118435,-60,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531912,5,2026-04-28 21:49:33.346688,2026-05-14 19:03:42.722871,-42,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531913,5,2026-04-28 21:49:33.445737,2026-05-14 19:03:43.003295,-49,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531918,5,2026-04-28 21:49:33.445082,2026-05-14 19:03:42.819648,-48,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531919,5,2026-04-28 21:49:33.364823,2026-05-14 19:03:42.826459,-48,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531921,5,2026-04-28 21:49:33.446402,2026-05-14 19:03:42.729937,-49,False,Review with EPC decoder and map to SKU/GTIN if real
+0000AD000013062813375102,5,2026-04-28 21:49:33.447059,2026-05-14 19:03:42.720315,-44,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500469,5,2026-04-28 21:49:33.444228,2026-05-14 19:03:42.808847,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500471,5,2026-04-28 21:49:33.401302,2026-05-14 19:03:42.690885,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500473,5,2026-04-28 21:49:33.477827,2026-05-14 19:03:42.700005,-23,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500474,5,2026-04-28 21:49:33.480042,2026-05-14 19:03:42.813062,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+010221153000000012500470,5,2026-04-28 21:49:33.373396,2026-05-14 19:03:42.719294,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+12534541525F4C4142323490,5,2026-04-28 21:49:33.344983,2026-05-14 19:03:42.704660,-44,False,Review with EPC decoder and map to SKU/GTIN if real
+300833B2DDD9014000000028,5,2026-04-28 21:49:33.466490,2026-05-14 19:03:42.897852,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+300833B2DDD90140FFFFF001,5,2026-04-28 21:49:33.447723,2026-05-14 19:03:42.736630,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C16640770C,5,2026-04-28 21:49:33.342868,2026-05-14 19:03:42.692688,-40,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C16640770D,5,2026-04-28 21:49:33.359297,2026-05-14 19:03:42.854620,-41,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407712,5,2026-04-28 21:49:33.370881,2026-05-14 19:03:42.699062,-36,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407718,5,2026-04-28 21:49:33.363922,2026-05-14 19:03:42.823015,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C16640774D,5,2026-04-28 21:49:33.399331,2026-05-14 19:03:42.821148,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C16640774F,5,2026-04-28 21:49:33.357861,2026-05-14 19:03:42.708534,-29,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407755,5,2026-04-28 21:49:33.470655,2026-05-14 19:03:42.893796,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407757,5,2026-04-28 21:49:33.451686,2026-05-14 19:03:43.099839,-58,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407765,5,2026-04-28 21:49:33.397588,2026-05-14 19:03:42.706575,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407769,5,2026-04-28 21:49:33.402968,2026-05-14 19:03:42.733715,-52,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201136A020102,5,2026-04-28 21:49:33.408446,2026-05-15 23:18:45.982729,-42,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201149A020102,5,2026-04-28 21:49:33.392292,2026-05-14 19:03:43.095886,-52,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201205A020102,5,2026-04-28 21:49:33.385006,2026-05-14 19:03:42.797539,-35,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201206A020802,5,2026-04-28 21:49:33.376968,2026-05-14 19:03:42.795503,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201214A022002,5,2026-04-28 21:49:33.378487,2026-05-14 19:03:42.997742,-43,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201223A021002,5,2026-04-28 21:49:33.392927,2026-05-14 19:03:42.789787,-46,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201515A020802,5,2026-04-28 21:49:33.377740,2026-05-14 19:03:43.060862,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201516A020902,5,2026-04-28 21:49:33.382257,2026-05-14 19:03:42.787120,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201517A021002,5,2026-04-28 21:49:33.472483,2026-05-14 19:03:42.891881,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201536A021902,5,2026-04-28 21:49:33.414953,2026-05-14 19:03:43.316358,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201537A022002,5,2026-04-28 21:49:33.411899,2026-05-14 19:03:43.058015,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201557A020802,5,2026-04-28 21:49:33.391564,2026-05-14 19:03:42.771541,-31,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201632A021902,5,2026-04-28 21:49:33.382964,2026-05-14 19:03:42.943131,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201634A022002,5,2026-04-28 21:49:33.388874,2026-05-14 19:03:42.788089,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201638A020102,5,2026-04-28 21:49:33.383666,2026-05-14 19:03:42.882013,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201640A020802,5,2026-04-28 21:49:33.387472,2026-05-14 19:03:42.777020,-33,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201641A020902,5,2026-04-28 21:49:33.381158,2026-05-14 19:03:42.770209,-36,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201659A021802,5,2026-04-28 21:49:33.379941,2026-05-14 19:03:42.745003,-32,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201700A021902,5,2026-04-28 21:49:33.384347,2026-05-14 19:03:42.781386,-35,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201701A022002,5,2026-04-28 21:49:33.458089,2026-05-14 19:03:42.938284,-53,False,Review with EPC decoder and map to SKU/GTIN if real
+E2002100200056910CDE02AA,5,2026-04-28 21:49:33.360263,2026-05-14 19:03:43.046581,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+E28011606000020529FC6891,5,2026-04-28 21:49:33.355068,2026-05-14 19:03:42.717600,-44,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E28011606000020529FC699F,5,2026-04-28 21:49:33.367950,2026-05-14 19:03:42.806899,-40,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801160600002052A5B598E,5,2026-04-28 21:49:33.493946,2026-05-14 19:03:43.129624,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280116060000206102440C2,5,2026-04-28 21:49:33.439471,2026-05-14 19:03:43.122698,-52,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280116060000209054ED295,5,2026-04-28 21:49:33.353972,2026-05-14 19:03:42.807895,-41,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280117000000206457CF197,5,2026-04-28 21:49:33.356639,2026-05-14 19:03:42.734800,-32,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280117000000206457CF198,5,2026-04-28 21:49:33.350796,2026-05-14 19:03:42.858011,-42,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280117000000206457D009C,5,2026-04-28 21:49:33.365933,2026-05-14 19:03:42.724439,-37,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280117000000206457D009E,5,2026-04-28 21:49:33.367131,2026-05-14 19:03:42.694459,-39,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47AC,5,2026-04-28 21:49:34.009790,2026-05-14 19:03:42.922697,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6596,5,2026-04-28 21:49:33.491348,2026-05-14 19:03:42.726315,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB659E,5,2026-04-28 21:49:34.021927,2026-05-14 19:03:42.908409,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65C9,5,2026-04-28 21:49:34.063997,2026-05-14 19:03:42.923663,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C5,5,2026-04-28 21:49:34.025628,2026-05-14 19:03:42.730883,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C2,5,2026-04-28 21:49:34.074638,2026-05-14 19:03:42.898774,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5CA,5,2026-04-28 21:49:33.468940,2026-05-14 19:03:43.182302,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C1,5,2026-04-28 21:49:34.081669,2026-05-14 19:03:42.731817,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6CB,5,2026-04-28 21:49:33.983930,2026-05-14 19:03:42.695604,-50,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C1,5,2026-04-28 21:49:34.050890,2026-05-14 19:03:42.844806,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8CF,5,2026-04-28 21:49:34.027939,2026-05-14 19:03:43.007386,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC65B,5,2026-04-28 21:49:33.486469,2026-04-28 21:49:38.100841,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC65E,5,2026-04-28 21:49:33.487638,2026-05-14 19:03:43.438672,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6CD,5,2026-04-28 21:49:34.029735,2026-05-14 19:03:42.925914,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9CF,5,2026-04-28 21:49:33.460845,2026-05-14 19:03:42.859663,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C0,5,2026-04-28 21:49:33.480713,2026-05-14 19:03:42.927836,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C1,5,2026-04-28 21:49:33.481341,2026-05-14 19:03:43.043357,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C2,5,2026-04-28 21:49:33.478873,2026-05-14 19:03:42.903218,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C4,5,2026-04-28 21:49:34.065595,2026-05-14 19:03:42.960587,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+000000000000000000002960,4,2026-04-28 21:49:33.490672,2026-05-14 19:03:43.432090,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500467,4,2026-04-28 21:49:33.412583,2026-05-14 19:03:43.395923,-42,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500468,4,2026-04-28 21:49:33.462105,2026-05-14 19:03:42.684995,-41,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500475,4,2026-04-28 21:49:33.409985,2026-05-14 19:03:42.896939,-53,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153040000012500468,4,2026-04-28 21:49:33.987416,2026-05-14 19:03:43.057105,-33,False,Review with EPC decoder and map to SKU/GTIN if real
+300833B2DDD9014000000001,4,2026-04-28 21:49:33.369504,2026-05-14 19:03:43.029447,-48,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201241A021802,4,2026-04-28 21:49:33.463913,2026-05-14 19:03:42.739747,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201504A021102,4,2026-04-28 21:49:33.434466,2026-05-14 19:03:43.246804,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201614A021002,4,2026-04-28 21:49:33.497731,2026-05-14 19:03:42.780303,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201628A021002,4,2026-04-28 21:49:33.481945,2026-05-14 19:03:42.741655,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201644A021102,4,2026-04-28 21:49:33.389523,2026-04-28 21:49:36.773884,-53,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201739A021002,4,2026-04-28 21:49:33.435349,2026-05-14 19:03:43.225737,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+E200001C430102452190DF8A,4,2026-04-28 21:49:34.001194,2026-05-14 19:03:42.892859,-46,False,Review with EPC decoder and map to SKU/GTIN if real
+E200001D431402310580CF2F,4,2026-04-28 21:49:31.806986,2026-05-14 19:03:42.947508,-59,False,Review with EPC decoder and map to SKU/GTIN if real
+E200001D910C00541580184F,4,2026-04-28 21:49:33.485051,2026-04-28 21:49:36.895662,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+E200001D910C00611580228A,4,2026-04-28 21:49:31.816114,2026-04-28 21:49:38.152657,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+E2004A1D691EE8F136B7DBA3,4,2026-04-28 21:49:33.482614,2026-05-14 19:03:43.023739,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+E20083666617025120603C62,4,2026-04-28 21:49:34.085867,2026-05-14 19:03:43.154945,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+E20090002011112440001011,4,2026-04-28 21:49:33.496585,2026-05-14 19:03:43.265136,-58,False,Review with EPC decoder and map to SKU/GTIN if real
+E280116060000208E916A026,4,2026-04-28 21:49:31.317445,2026-04-28 21:49:38.671912,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280117000000206457CF191,4,2026-04-28 21:49:34.005650,2026-05-14 19:03:42.980266,-46,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006540B9AD41,4,2026-04-28 21:49:33.487041,2026-05-14 19:03:43.104238,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4793,4,2026-04-28 21:49:35.728689,2026-05-15 23:18:54.985829,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4795,4,2026-04-28 21:49:34.052142,2026-05-14 19:03:42.814671,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB479D,4,2026-04-28 21:49:34.084603,2026-05-14 19:03:43.244465,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A9,4,2026-04-28 21:49:35.761483,2026-05-14 19:03:43.010783,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6592,4,2026-04-28 21:49:34.069120,2026-05-14 19:03:43.219837,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6594,4,2026-04-28 21:49:34.069781,2026-05-14 19:03:43.212893,-52,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6598,4,2026-04-28 21:49:34.072895,2026-05-14 19:03:43.248376,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65CB,4,2026-04-28 21:49:35.804822,2026-05-14 19:03:43.008331,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65CC,4,2026-04-28 21:49:35.754774,2026-05-14 19:03:43.032436,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C1,4,2026-04-28 21:49:35.757037,2026-05-14 19:03:42.852138,-52,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67CF,4,2026-04-28 21:49:35.787445,2026-05-14 19:03:43.119344,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB8692,4,2026-04-28 21:49:35.760734,2026-05-14 19:03:42.952727,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB869C,4,2026-04-28 21:49:34.082831,2026-05-14 19:03:43.035976,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB8752,4,2026-04-28 21:49:31.800090,2026-05-15 23:18:58.704061,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C3,4,2026-04-28 21:49:34.029114,2026-05-14 19:03:42.833860,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C7,4,2026-04-28 21:49:35.749893,2026-05-14 19:03:42.705662,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C8,4,2026-04-28 21:49:35.797010,2026-05-14 19:03:42.816293,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5CD,4,2026-04-28 21:49:35.756418,2026-05-14 19:03:42.702629,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6CE,4,2026-04-28 21:49:35.758412,2026-05-14 19:03:42.857129,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C2,4,2026-04-28 21:49:34.081044,2026-05-14 19:03:42.921714,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C5,4,2026-04-28 21:49:34.030381,2026-05-14 19:03:43.200488,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C6,4,2026-04-28 21:49:34.056785,2026-05-14 19:03:43.048611,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8CD,4,2026-04-28 21:49:35.782676,2026-05-14 19:03:42.918541,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5C4,4,2026-04-28 21:49:35.762121,2026-05-14 19:03:43.042441,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5CE,4,2026-04-28 21:49:34.054981,2026-05-14 19:03:43.047683,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8C7,4,2026-04-28 21:49:35.785398,2026-05-14 19:03:43.137926,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8CD,4,2026-04-28 21:49:34.074040,2026-05-14 19:03:42.926917,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9CA,4,2026-04-28 21:49:35.765153,2026-05-14 19:03:42.932061,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C1,4,2026-04-28 21:49:35.794100,2026-05-14 19:03:42.827397,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09CF,4,2026-04-28 21:49:34.055597,2026-05-14 19:03:42.928704,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+00000000000000000A101405,3,2026-04-28 21:49:33.465865,2026-05-14 19:03:43.109452,-58,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531914,3,2026-04-28 21:49:35.801204,2026-05-14 19:03:42.822115,-40,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531917,3,2026-04-28 21:49:35.718841,2026-05-14 19:03:43.322231,-52,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531920,3,2026-04-28 21:49:35.755790,2026-05-14 19:03:42.895820,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+3035307B2831B382104A1542,3,2026-04-28 21:49:35.636142,2026-05-14 19:03:42.948375,-57,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407764,3,2026-04-28 21:49:35.759130,2026-05-14 19:03:43.215575,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201139A021002,3,2026-04-28 21:49:37.347490,2026-05-14 19:03:42.853160,-49,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201350A021002,3,2026-04-28 21:49:31.815181,2026-04-28 21:49:38.244768,-60,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201438A021902,3,2026-04-28 21:49:34.050274,2026-05-14 19:03:43.223976,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+E280116060000208E916A056,3,2026-04-28 21:49:33.455105,2026-05-14 19:03:42.946570,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280117000000206457CF194,3,2026-04-28 21:49:33.513031,2026-05-14 19:03:43.384591,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006540B8E3E1,3,2026-04-28 21:49:31.314341,2026-04-28 21:49:38.676348,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4797,3,2026-04-28 21:49:36.841718,2026-05-14 19:03:42.846458,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB659A,3,2026-04-28 21:49:36.833669,2026-05-14 19:03:43.127705,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65CD,3,2026-04-28 21:49:35.802533,2026-05-14 19:03:43.187981,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65CE,3,2026-04-28 21:49:35.751121,2026-05-14 19:03:43.052279,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67CA,3,2026-04-28 21:49:35.791105,2026-05-14 19:03:42.818133,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB689C,3,2026-04-28 21:49:36.827937,2026-05-14 19:03:43.390342,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A2,3,2026-04-28 21:49:36.891165,2026-05-14 19:03:42.956597,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A4,3,2026-04-28 21:49:36.807102,2026-05-14 19:03:42.955661,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86AB,3,2026-04-28 21:49:36.882750,2026-05-14 19:03:42.931087,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB8750,3,2026-04-28 21:49:36.907428,2026-05-15 23:18:55.490561,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C2,3,2026-04-28 21:49:35.757730,2026-05-14 19:03:42.842294,-52,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C1,3,2026-04-28 21:49:35.725100,2026-05-14 19:03:43.005823,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C3,3,2026-04-28 21:49:35.800015,2026-05-14 19:03:43.038507,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA690,3,2026-04-28 21:49:35.776784,2026-05-14 19:03:42.801311,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA694,3,2026-04-28 21:49:35.764001,2026-05-14 19:03:43.237630,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6C4,3,2026-04-28 21:49:36.891922,2026-05-14 19:03:43.397779,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6CF,3,2026-04-28 21:49:35.733636,2026-05-14 19:03:42.841403,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C2,3,2026-04-28 21:49:36.831953,2026-05-14 19:03:43.039420,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C5,3,2026-04-28 21:49:35.796305,2026-05-14 19:03:43.184803,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7CA,3,2026-04-28 21:49:34.083986,2026-05-14 19:03:43.012408,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7CD,3,2026-04-28 21:49:35.798298,2026-05-14 19:03:42.981743,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7CF,3,2026-04-28 21:49:35.793427,2026-05-14 19:03:43.239505,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C0,3,2026-04-28 21:49:36.836234,2026-05-14 19:03:43.194007,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8CE,3,2026-04-28 21:49:35.762736,2026-05-14 19:03:43.124446,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5C8,3,2026-04-28 21:49:35.736906,2026-05-14 19:03:42.830404,-50,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5CA,3,2026-04-28 21:49:36.824691,2026-05-14 19:03:43.014200,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C9,3,2026-04-28 21:49:36.859999,2026-05-14 19:03:43.209819,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6CB,3,2026-04-28 21:49:35.801880,2026-05-14 19:03:43.213795,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7C3,3,2026-04-28 21:49:36.862064,2026-05-14 19:03:43.114491,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7CA,3,2026-04-28 21:49:36.899950,2026-05-14 19:03:43.138846,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC8CF,3,2026-04-28 21:49:36.855625,2026-05-14 19:03:43.019811,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C0,3,2026-04-28 21:49:36.880075,2026-05-14 19:03:43.034223,-52,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C2,3,2026-04-28 21:49:36.872837,2026-05-14 19:03:43.140691,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C4,3,2026-04-28 21:49:35.683611,2026-05-14 19:03:42.802335,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9CD,3,2026-04-28 21:49:36.820358,2026-05-14 19:03:42.856179,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE6CE,3,2026-04-28 21:49:35.797649,2026-05-14 19:03:43.155866,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE6CF,3,2026-04-28 21:49:35.763369,2026-05-14 19:03:43.134316,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8C8,3,2026-04-28 21:49:34.053579,2026-05-14 19:03:43.053212,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9CC,3,2026-04-28 21:49:36.890522,2026-05-14 19:03:43.009239,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9CF,3,2026-04-28 21:49:36.902537,2026-05-14 19:03:43.214687,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C2,3,2026-04-28 21:49:36.862688,2026-05-14 19:03:43.030865,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06CC,3,2026-04-28 21:49:33.492076,2026-05-14 19:03:43.254278,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06CF,3,2026-04-28 21:49:36.900607,2026-05-14 19:03:43.256664,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C7,3,2026-04-28 21:49:36.753897,2026-05-14 19:03:42.828353,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C8,3,2026-04-28 21:49:34.056148,2026-05-14 19:03:43.197511,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+00000000000000000A101403,2,2026-04-28 21:49:31.326337,2026-04-28 21:49:38.255943,-64,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531915,2,2026-04-28 21:49:35.719872,2026-05-14 19:03:43.394957,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500472,2,2026-04-28 21:49:36.699157,2026-05-14 19:03:42.721268,-37,False,Review with EPC decoder and map to SKU/GTIN if real
+181912122151511A162A0006,2,2026-04-28 21:49:38.216133,2026-05-14 19:03:43.146821,-61,False,Review with EPC decoder and map to SKU/GTIN if real
+181912122151511A162A0007,2,2026-04-28 21:49:38.153970,2026-05-14 19:03:43.304956,-62,False,Review with EPC decoder and map to SKU/GTIN if real
+181912122151511A162A0008,2,2026-04-28 21:49:38.140334,2026-05-14 19:03:43.310662,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+206C8CAA9C817EA59C81349C,2,2026-04-28 21:49:38.247012,2026-05-14 19:03:43.153128,-68,False,Review with EPC decoder and map to SKU/GTIN if real
+3034045F640A979B023AAAF3,2,2026-04-28 21:49:38.141653,2026-04-28 21:49:39.026773,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C16640770E,2,2026-04-28 21:49:35.752449,2026-05-14 19:03:43.098924,-48,False,Review with EPC decoder and map to SKU/GTIN if real
+6E7A5977F49D5977F49D0965,2,2026-04-28 21:49:38.245828,2026-04-28 21:49:38.677330,-66,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201151A020802,2,2026-04-28 21:49:35.803770,2026-05-14 19:03:42.936306,-48,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201211A021802,2,2026-04-28 21:49:38.146986,2026-05-14 19:03:43.193071,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201226A021802,2,2026-04-28 21:49:35.701731,2026-05-14 19:03:43.024620,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201346A020102,2,2026-04-28 21:49:34.390308,2026-04-28 21:49:38.248237,-63,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201500A020802,2,2026-04-28 21:49:38.203294,2026-05-14 19:03:42.744003,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201545A020902,2,2026-04-28 21:49:35.792740,2026-05-14 19:03:43.306816,-60,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201625A020802,2,2026-04-28 21:49:38.152013,2026-05-14 19:03:42.934717,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201626A020902,2,2026-04-28 21:49:38.188132,2026-05-14 19:03:42.793400,-41,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201642A021002,2,2026-04-28 21:49:36.904866,2026-05-14 19:03:42.885077,-52,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201657A021102,2,2026-04-28 21:49:38.208020,2026-05-14 19:03:42.879375,-40,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201709A020902,2,2026-04-28 21:49:38.192304,2026-05-14 19:03:42.880789,-46,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201710A021002,2,2026-04-28 21:49:38.185982,2026-05-14 19:03:42.983654,-48,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201716A022002,2,2026-04-28 21:49:38.148848,2026-05-14 19:03:42.988841,-44,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201730A022002,2,2026-04-28 21:49:38.156962,2026-05-14 19:03:42.991523,-43,False,Review with EPC decoder and map to SKU/GTIN if real
+E200326A539596B120CBC65A,2,2026-04-28 21:49:36.905495,2026-05-14 19:03:43.028526,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+E200359BF0A75889B0FBA162,2,2026-04-28 21:49:34.071682,2026-04-28 21:49:35.751794,-66,False,Review with EPC decoder and map to SKU/GTIN if real
+E20090002011112440001243,2,2026-04-28 21:49:35.795136,2026-05-14 19:03:43.128713,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+E280116060000208E91664C6,2,2026-04-28 21:49:31.321317,2026-04-28 21:49:38.698758,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280116060000208E91664D6,2,2026-04-28 21:49:31.330788,2026-04-28 21:49:38.655861,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280117000000206457D009B,2,2026-04-28 21:49:35.753782,2026-05-14 19:03:43.571704,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006540B94831,2,2026-04-28 21:49:31.316703,2026-04-28 21:49:38.673137,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006540B94891,2,2026-04-28 21:49:35.677412,2026-05-14 19:03:43.126477,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4792,2,2026-04-28 21:49:38.226829,2026-05-14 19:03:43.374183,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB479A,2,2026-04-28 21:49:38.208876,2026-05-14 19:03:43.485612,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB479F,2,2026-04-28 21:49:38.231941,2026-05-14 19:03:43.255166,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A2,2,2026-04-28 21:49:36.825401,2026-05-14 19:03:42.912337,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47AB,2,2026-04-28 21:49:38.127510,2026-05-14 19:03:43.260053,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47AD,2,2026-04-28 21:49:38.257778,2026-05-14 19:03:43.361862,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6591,2,2026-04-28 21:49:38.087094,2026-05-14 19:03:43.224898,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6593,2,2026-04-28 21:49:38.101473,2026-05-14 19:03:43.222994,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6597,2,2026-04-28 21:49:38.053125,2026-05-14 19:03:43.112685,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6599,2,2026-04-28 21:49:38.233854,2026-05-14 19:03:43.400968,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB659D,2,2026-04-28 21:49:38.219895,2026-05-14 19:03:43.482465,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C0,2,2026-04-28 21:49:38.133148,2026-05-14 19:03:43.203673,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C5,2,2026-04-28 21:49:38.131150,2026-05-14 19:03:43.579674,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C6,2,2026-04-28 21:49:38.212515,2026-05-14 19:03:43.233816,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6852,2,2026-04-28 21:49:34.077895,2026-04-28 21:49:38.140976,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6891,2,2026-04-28 21:49:38.236871,2026-05-14 19:03:43.290854,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6892,2,2026-04-28 21:49:36.826045,2026-05-14 19:03:43.040787,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6896,2,2026-04-28 21:49:38.195059,2026-05-14 19:03:43.419483,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6898,2,2026-04-28 21:49:38.194456,2026-05-14 19:03:43.301650,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C3,2,2026-04-28 21:49:36.821002,2026-05-14 19:03:42.907545,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C4,2,2026-04-28 21:49:38.219267,2026-05-14 19:03:43.410804,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85CF,2,2026-04-28 21:49:38.228994,2026-05-14 19:03:43.411705,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB8696,2,2026-04-28 21:49:36.739714,2026-05-14 19:03:42.843212,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A3,2,2026-04-28 21:49:38.175996,2026-05-14 19:03:43.426537,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A6,2,2026-04-28 21:49:38.055839,2026-05-14 19:03:43.296505,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86AE,2,2026-04-28 21:49:38.082279,2026-05-14 19:03:43.207986,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86AF,2,2026-04-28 21:49:38.213795,2026-05-14 19:03:43.325348,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB87C8,2,2026-04-28 21:49:36.865569,2026-05-14 19:03:43.133437,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C4,2,2026-04-28 21:49:38.210740,2026-05-14 19:03:43.151680,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C8,2,2026-04-28 21:49:36.882121,2026-05-14 19:03:43.323877,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88CA,2,2026-04-28 21:49:38.191555,2026-05-14 19:03:43.229817,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88CD,2,2026-04-28 21:49:38.259600,2026-05-14 19:03:43.428827,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C5,2,2026-04-28 21:49:38.091488,2026-05-14 19:03:43.340355,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5CF,2,2026-04-28 21:49:38.188789,2026-05-14 19:03:43.261590,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA65C,2,2026-04-28 21:49:38.138087,2026-05-14 19:03:43.327104,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA691,2,2026-04-28 21:49:38.182883,2026-05-14 19:03:43.326224,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6CD,2,2026-04-28 21:49:38.244142,2026-05-14 19:03:43.202733,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C0,2,2026-04-28 21:49:38.087687,2026-05-14 19:03:43.123547,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C3,2,2026-04-28 21:49:38.199843,2026-05-14 19:03:43.264235,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C9,2,2026-04-28 21:49:36.866804,2026-05-14 19:03:43.159030,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7CC,2,2026-04-28 21:49:36.866182,2026-05-14 19:03:43.500838,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7CE,2,2026-04-28 21:49:36.800578,2026-05-14 19:03:42.953654,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C4,2,2026-04-28 21:49:38.058972,2026-05-14 19:03:43.131532,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C9,2,2026-04-28 21:49:36.856859,2026-05-14 19:03:42.958403,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA99A,2,2026-04-28 21:49:38.187475,2026-05-14 19:03:43.446838,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA99C,2,2026-04-28 21:49:38.116774,2026-05-14 19:03:43.266699,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA99E,2,2026-04-28 21:49:38.062199,2026-05-14 19:03:43.235686,-50,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA99F,2,2026-04-28 21:49:38.067296,2026-05-14 19:03:43.305882,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5C1,2,2026-04-28 21:49:36.863886,2026-05-14 19:03:43.017897,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5CB,2,2026-04-28 21:49:38.220894,2026-05-14 19:03:43.250138,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5CC,2,2026-04-28 21:49:38.110842,2026-05-14 19:03:43.055611,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5CD,2,2026-04-28 21:49:35.790103,2026-05-14 19:03:43.294167,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC655,2,2026-04-28 21:49:38.139116,2026-05-14 19:03:43.198657,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C6,2,2026-04-28 21:49:36.860752,2026-05-14 19:03:43.054085,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6CA,2,2026-04-28 21:49:38.222686,2026-05-14 19:03:43.425666,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7C6,2,2026-04-28 21:49:38.113933,2026-05-14 19:03:43.240397,-53,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7C9,2,2026-04-28 21:49:36.873852,2026-05-14 19:03:43.447712,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC8C2,2,2026-04-28 21:49:38.258454,2026-05-14 19:03:43.132584,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC8C9,2,2026-04-28 21:49:36.877840,2026-05-14 19:03:43.191642,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C6,2,2026-04-28 21:49:36.839108,2026-05-14 19:03:43.018897,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9CB,2,2026-04-28 21:49:38.234532,2026-05-14 19:03:43.417734,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8C2,2,2026-04-28 21:49:38.076430,2026-05-14 19:03:43.139785,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8C5,2,2026-04-28 21:49:38.122961,2026-05-14 19:03:43.431217,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8C9,2,2026-04-28 21:49:36.805490,2026-05-14 19:03:42.951773,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8CE,2,2026-04-28 21:49:38.121673,2026-05-14 19:03:43.227980,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C1,2,2026-04-28 21:49:38.193786,2026-05-14 19:03:43.578459,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C3,2,2026-04-28 21:49:38.180767,2026-05-14 19:03:43.487474,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C4,2,2026-04-28 21:49:38.077870,2026-05-14 19:03:43.297762,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9CB,2,2026-04-28 21:49:36.885157,2026-05-14 19:03:43.321279,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C3,2,2026-04-28 21:49:38.071144,2026-05-14 19:03:43.228915,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C4,2,2026-04-28 21:49:36.827345,2026-05-14 19:03:42.957495,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C6,2,2026-04-28 21:49:38.096575,2026-05-14 19:03:43.258269,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06CD,2,2026-04-28 21:49:38.120323,2026-05-14 19:03:43.234767,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06CE,2,2026-04-28 21:49:38.197963,2026-05-14 19:03:43.354905,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09CE,2,2026-04-28 21:49:38.124742,2026-05-14 19:03:43.307734,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC29C0,2,2026-04-28 21:49:38.197339,2026-05-14 19:03:43.299776,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC29C1,2,2026-04-28 21:49:38.203946,2026-05-14 19:03:43.317263,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+000000000000000000002959,1,2026-05-14 19:03:43.330197,2026-05-14 19:03:43.330197,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000008522,1,2026-04-28 21:49:35.741774,2026-04-28 21:49:35.741774,-62,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000000E40000,1,2026-05-14 19:03:43.218909,2026-05-14 19:03:43.218909,-67,False,Review with EPC decoder and map to SKU/GTIN if real
+00000000000000000A101798,1,2026-04-28 21:49:31.328855,2026-04-28 21:49:31.328855,-64,False,Review with EPC decoder and map to SKU/GTIN if real
+000000000000000017531916,1,2026-05-14 19:03:43.415007,2026-05-14 19:03:43.415007,-64,False,Review with EPC decoder and map to SKU/GTIN if real
+0000000000000000FFFF0001,1,2026-05-16T02:01:32.414720,2026-05-16T02:01:32.414720,-59,False,Review with EPC decoder and map to SKU/GTIN if real
+00000000FEBACEEA17531914,1,2026-05-14 19:03:43.311546,2026-05-14 19:03:43.311546,-57,False,Review with EPC decoder and map to SKU/GTIN if real
+0000FE7E3F771913804B756D7777DEE677770000FFFFFFFF,1,2026-05-14 19:03:43.427431,2026-05-14 19:03:43.427431,-73,False,Review with EPC decoder and map to SKU/GTIN if real
+0000FEBFFF990000DFD3791E,1,2026-05-14 19:03:43.496377,2026-05-14 19:03:43.496377,-70,False,Review with EPC decoder and map to SKU/GTIN if real
+000221153000000012500466,1,2026-05-14 19:03:42.950596,2026-05-14 19:03:42.950596,-49,False,Review with EPC decoder and map to SKU/GTIN if real
+181912122151511A083A0019,1,2026-05-14 19:03:43.148282,2026-05-14 19:03:43.148282,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+181912122151511A083A0025,1,2026-04-28 21:49:38.663192,2026-04-28 21:49:38.663192,-61,False,Review with EPC decoder and map to SKU/GTIN if real
+181912122151511A162A0004,1,2026-04-28 21:49:38.646735,2026-04-28 21:49:38.646735,-57,False,Review with EPC decoder and map to SKU/GTIN if real
+181912122151511A29AA0001,1,2026-04-28 21:49:38.650935,2026-04-28 21:49:38.650935,-60,False,Review with EPC decoder and map to SKU/GTIN if real
+200221153000000012500467,1,2026-05-14 19:03:43.507005,2026-05-14 19:03:43.507005,-43,False,Review with EPC decoder and map to SKU/GTIN if real
+3034049FAC30ED80000AFA4D,1,2026-05-14 19:03:43.507853,2026-05-14 19:03:43.507853,-70,False,Review with EPC decoder and map to SKU/GTIN if real
+303404BE3C4D48C165CB8EE9,1,2026-04-28 21:49:38.051347,2026-04-28 21:49:38.051347,-64,False,Review with EPC decoder and map to SKU/GTIN if real
+319D28D1FE0828D1FE08CD4E,1,2026-05-14 19:03:43.347715,2026-05-14 19:03:43.347715,-71,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407752,1,2026-04-28 21:49:35.806670,2026-04-28 21:49:35.806670,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407754,1,2026-05-14 19:03:43.346796,2026-05-14 19:03:43.346796,-74,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407756,1,2026-05-14 19:03:43.502654,2026-05-14 19:03:43.502654,-64,False,Review with EPC decoder and map to SKU/GTIN if real
+3500AE54700016C166407763,1,2026-05-14 19:03:43.573560,2026-05-14 19:03:43.573560,-65,False,Review with EPC decoder and map to SKU/GTIN if real
+5349454D454E533030321902,1,2026-05-14 19:03:43.430320,2026-05-14 19:03:43.430320,-52,False,Review with EPC decoder and map to SKU/GTIN if real
+5349454D454E533030340102,1,2026-05-14 19:03:43.501743,2026-05-14 19:03:43.501743,-42,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A200850A020902,1,2026-05-14 19:03:43.208917,2026-05-14 19:03:43.208917,-59,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A200851A021002,1,2026-05-14 19:03:43.094693,2026-05-14 19:03:43.094693,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201122A020102,1,2026-05-14 19:03:43.064195,2026-05-14 19:03:43.064195,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201137A020802,1,2026-05-14 19:03:43.144184,2026-05-14 19:03:43.144184,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201155A021002,1,2026-05-14 19:03:43.098021,2026-05-14 19:03:43.098021,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201156A021102,1,2026-05-14 19:03:43.097084,2026-05-14 19:03:43.097084,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201157A021802,1,2026-05-14 19:03:43.150155,2026-05-14 19:03:43.150155,-57,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201159A021902,1,2026-05-14 19:03:43.149241,2026-05-14 19:03:43.149241,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201200A022002,1,2026-05-14 19:03:43.154060,2026-05-14 19:03:43.154060,-58,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201207A020902,1,2026-04-28 21:49:38.198598,2026-04-28 21:49:38.198598,-60,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201208A021002,1,2026-05-14 19:03:43.062342,2026-05-14 19:03:43.062342,-53,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201222A020902,1,2026-05-14 19:03:42.996569,2026-05-14 19:03:42.996569,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201225A021102,1,2026-05-14 19:03:42.993391,2026-05-14 19:03:42.993391,-49,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201228A021902,1,2026-05-14 19:03:42.937290,2026-05-14 19:03:42.937290,-52,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201229A022002,1,2026-05-14 19:03:43.117514,2026-05-14 19:03:43.117514,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201239A021102,1,2026-05-14 19:03:42.796593,2026-05-14 19:03:42.796593,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201459A020102,1,2026-04-28 21:49:38.237516,2026-04-28 21:49:38.237516,-69,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201501A020902,1,2026-05-14 19:03:42.941280,2026-05-14 19:03:42.941280,-51,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201502A021002,1,2026-05-14 19:03:42.791367,2026-05-14 19:03:42.791367,-45,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201507A021902,1,2026-05-14 19:03:42.785074,2026-05-14 19:03:42.785074,-49,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201513A020102,1,2026-05-14 19:03:43.504408,2026-05-14 19:03:43.504408,-59,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201523A022002,1,2026-05-14 19:03:42.942194,2026-05-14 19:03:42.942194,-53,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201530A020902,1,2026-05-15 23:18:47.074836,2026-05-15 23:18:47.074836,-46,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201535A021802,1,2026-05-14 19:03:43.309474,2026-05-14 19:03:43.309474,-59,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201547A021102,1,2026-05-14 19:03:42.786154,2026-05-14 19:03:42.786154,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201551A022002,1,2026-05-15 23:18:47.422950,2026-05-15 23:18:47.422950,-41,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201612A020902,1,2026-05-14 19:03:43.063280,2026-05-14 19:03:43.063280,-50,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201624A020102,1,2026-05-14 19:03:42.992478,2026-05-14 19:03:42.992478,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201645A021802,1,2026-05-14 19:03:42.994280,2026-05-14 19:03:42.994280,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201648A022002,1,2026-05-14 19:03:42.933045,2026-05-14 19:03:42.933045,-54,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201706A020102,1,2026-04-28 21:49:38.147650,2026-04-28 21:49:38.147650,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201712A021102,1,2026-04-28 21:49:38.156346,2026-04-28 21:49:38.156346,-58,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201715A021902,1,2026-05-14 19:03:42.989866,2026-05-14 19:03:42.989866,-46,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201729A021902,1,2026-04-28 21:49:38.060449,2026-04-28 21:49:38.060449,-55,False,Review with EPC decoder and map to SKU/GTIN if real
+A02A061028A201906A021802,1,2026-05-14 19:03:43.189096,2026-05-14 19:03:43.189096,-62,False,Review with EPC decoder and map to SKU/GTIN if real
+AD2A16001166838654000089,1,2026-05-14 19:03:43.396830,2026-05-14 19:03:43.396830,-57,False,Review with EPC decoder and map to SKU/GTIN if real
+BADC0DE00000FFFF00000002,1,2026-05-16T02:01:32.403860,2026-05-16T02:01:32.403860,-52,False,Review with EPC decoder and map to SKU/GTIN if real
+DEADBEEF00000000CAFE0001,1,2026-05-16T02:01:32.427556,2026-05-16T02:01:32.427556,-57,False,Review with EPC decoder and map to SKU/GTIN if real
+E200001D910C0069158029CE,1,2026-05-14 19:03:43.143204,2026-05-14 19:03:43.143204,-61,False,Review with EPC decoder and map to SKU/GTIN if real
+E20064A92C3CCBF149C9332F,1,2026-05-14 19:03:43.027594,2026-05-14 19:03:43.027594,-53,False,Review with EPC decoder and map to SKU/GTIN if real
+E20064FFC0A97AB12CB115EA,1,2026-05-14 19:03:43.026585,2026-05-14 19:03:43.026585,-58,False,Review with EPC decoder and map to SKU/GTIN if real
+E20090002011112440001041,1,2026-04-28 21:49:35.716634,2026-04-28 21:49:35.716634,-56,False,Review with EPC decoder and map to SKU/GTIN if real
+E20090002011112440001060,1,2026-05-14 19:03:43.442027,2026-05-14 19:03:43.442027,-61,False,Review with EPC decoder and map to SKU/GTIN if real
+E28011112222333344440001,1,2026-05-15 23:18:45.694562,2026-05-15 23:18:45.694562,-39,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E28011112222333344440002,1,2026-05-15 23:18:45.691881,2026-05-15 23:18:45.691881,-44,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E28011112222333344440003,1,2026-05-15 23:18:45.685874,2026-05-15 23:18:45.685874,-46,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E28011112222333344440004,1,2026-05-15 23:18:45.679669,2026-05-15 23:18:45.679669,-46,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E28011112222333344440005,1,2026-05-15 23:18:45.672540,2026-05-15 23:18:45.672540,-44,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280116060000208E91664B6,1,2026-04-28 21:49:31.330058,2026-04-28 21:49:31.330058,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280116060000208E91664E6,1,2026-04-28 21:49:38.699809,2026-04-28 21:49:38.699809,-74,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E280116060000208E916A036,1,2026-05-14 19:03:43.065633,2026-05-14 19:03:43.065633,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4791,1,2026-05-14 19:03:43.510140,2026-05-14 19:03:43.510140,-73,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4794,1,2026-05-14 19:03:43.121508,2026-05-14 19:03:43.121508,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4796,1,2026-05-14 19:03:43.451410,2026-05-14 19:03:43.451410,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB4798,1,2026-05-14 19:03:43.569146,2026-05-14 19:03:43.569146,-72,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB479B,1,2026-05-14 19:03:43.421447,2026-05-14 19:03:43.421447,-74,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB479C,1,2026-05-14 19:03:43.457438,2026-05-14 19:03:43.457438,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB479E,1,2026-05-14 19:03:43.263332,2026-05-14 19:03:43.263332,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A0,1,2026-05-14 19:03:43.338597,2026-05-14 19:03:43.338597,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A4,1,2026-05-14 19:03:43.455646,2026-05-14 19:03:43.455646,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A5,1,2026-05-14 19:03:43.190165,2026-05-14 19:03:43.190165,-72,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A6,1,2026-05-14 19:03:43.251723,2026-05-14 19:03:43.251723,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A7,1,2026-05-14 19:03:43.350054,2026-05-14 19:03:43.350054,-73,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47A8,1,2026-05-14 19:03:43.037531,2026-05-14 19:03:43.037531,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47AA,1,2026-05-14 19:03:43.480711,2026-05-14 19:03:43.480711,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB47AE,1,2026-05-14 19:03:43.253338,2026-05-14 19:03:43.253338,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6595,1,2026-04-28 21:49:38.186800,2026-04-28 21:49:38.186800,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB659B,1,2026-05-14 19:03:43.356717,2026-05-14 19:03:43.356717,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB659C,1,2026-04-28 21:49:38.111520,2026-04-28 21:49:38.111520,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB659F,1,2026-05-14 19:03:43.458792,2026-05-14 19:03:43.458792,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65C6,1,2026-05-14 19:03:43.412603,2026-05-14 19:03:43.412603,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65C7,1,2026-05-14 19:03:43.452295,2026-05-14 19:03:43.452295,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB65CA,1,2026-05-14 19:03:43.399815,2026-05-14 19:03:43.399815,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C2,1,2026-05-14 19:03:43.355830,2026-05-14 19:03:43.355830,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C3,1,2026-05-14 19:03:43.420544,2026-05-14 19:03:43.420544,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB67C8,1,2026-05-14 19:03:43.445967,2026-05-14 19:03:43.445967,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6890,1,2026-05-14 19:03:43.335115,2026-05-14 19:03:43.335115,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6897,1,2026-04-28 21:49:38.225776,2026-04-28 21:49:38.225776,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB6899,1,2026-04-28 21:49:38.202660,2026-04-28 21:49:38.202660,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB689A,1,2026-05-14 19:03:43.416840,2026-05-14 19:03:43.416840,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB68A0,1,2026-05-14 19:03:43.245366,2026-05-14 19:03:43.245366,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB68A2,1,2026-05-14 19:03:43.506188,2026-05-14 19:03:43.506188,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C2,1,2026-05-14 19:03:43.499464,2026-05-14 19:03:43.499464,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C5,1,2026-05-14 19:03:43.435351,2026-05-14 19:03:43.435351,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C6,1,2026-05-14 19:03:43.386139,2026-05-14 19:03:43.386139,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C7,1,2026-05-14 19:03:43.210740,2026-05-14 19:03:43.210740,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85C8,1,2026-05-14 19:03:43.345027,2026-05-14 19:03:43.345027,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85CA,1,2026-05-14 19:03:43.242495,2026-05-14 19:03:43.242495,-51,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85CD,1,2026-05-14 19:03:43.440215,2026-05-14 19:03:43.440215,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB85CE,1,2026-05-14 19:03:43.204572,2026-05-14 19:03:43.204572,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB8690,1,2026-05-14 19:03:43.331084,2026-05-14 19:03:43.331084,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB8691,1,2026-04-28 21:49:38.126217,2026-04-28 21:49:38.126217,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB8695,1,2026-04-28 21:49:38.242617,2026-04-28 21:49:38.242617,-75,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB869A,1,2026-05-14 19:03:43.497311,2026-05-14 19:03:43.497311,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB869B,1,2026-05-14 19:03:43.113604,2026-05-14 19:03:43.113604,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB869D,1,2026-05-14 19:03:43.259168,2026-05-14 19:03:43.259168,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A0,1,2026-05-14 19:03:43.576963,2026-05-14 19:03:43.576963,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A5,1,2026-04-28 21:49:38.097847,2026-04-28 21:49:38.097847,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A7,1,2026-04-28 21:49:38.056759,2026-04-28 21:49:38.056759,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86A8,1,2026-05-14 19:03:43.337020,2026-05-14 19:03:43.337020,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86AA,1,2026-05-14 19:03:43.456541,2026-05-14 19:03:43.456541,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB86AC,1,2026-05-14 19:03:43.436251,2026-05-14 19:03:43.436251,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB876A,1,2026-04-28 21:49:31.813307,2026-04-28 21:49:31.813307,-73,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB87C0,1,2026-05-14 19:03:43.402776,2026-05-14 19:03:43.402776,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB87C1,1,2026-05-14 19:03:43.320362,2026-05-14 19:03:43.320362,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB87C2,1,2026-05-14 19:03:43.328659,2026-05-14 19:03:43.328659,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB87C9,1,2026-05-14 19:03:43.105988,2026-05-14 19:03:43.105988,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB87CA,1,2026-05-14 19:03:43.302533,2026-05-14 19:03:43.302533,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB87CF,1,2026-05-14 19:03:43.415928,2026-05-14 19:03:43.415928,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C6,1,2026-05-14 19:03:43.491271,2026-05-14 19:03:43.491271,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88C7,1,2026-05-14 19:03:43.342185,2026-05-14 19:03:43.342185,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88CB,1,2026-05-14 19:03:43.564369,2026-05-14 19:03:43.564369,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88CE,1,2026-05-14 19:03:43.443617,2026-05-14 19:03:43.443617,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABB88CF,1,2026-05-14 19:03:43.567364,2026-05-14 19:03:43.567364,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C4,1,2026-04-28 21:49:38.200851,2026-04-28 21:49:38.200851,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5C9,1,2026-05-14 19:03:43.351906,2026-05-14 19:03:43.351906,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5CB,1,2026-05-14 19:03:43.315455,2026-05-14 19:03:43.315455,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA5CC,1,2026-05-14 19:03:43.433730,2026-05-14 19:03:43.433730,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA692,1,2026-05-14 19:03:43.199574,2026-05-14 19:03:43.199574,-58,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA695,1,2026-05-14 19:03:43.445085,2026-05-14 19:03:43.445085,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA696,1,2026-05-14 19:03:43.437129,2026-05-14 19:03:43.437129,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA6CC,1,2026-05-14 19:03:43.312419,2026-05-14 19:03:43.312419,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C4,1,2026-05-14 19:03:43.495433,2026-05-14 19:03:43.495433,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C6,1,2026-05-14 19:03:43.107244,2026-05-14 19:03:43.107244,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C7,1,2026-05-14 19:03:43.360940,2026-05-14 19:03:43.360940,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7C8,1,2026-05-14 19:03:43.243612,2026-05-14 19:03:43.243612,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA7CB,1,2026-05-14 19:03:43.333650,2026-05-14 19:03:43.333650,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C1,1,2026-05-14 19:03:43.318811,2026-05-14 19:03:43.318811,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8C7,1,2026-05-14 19:03:43.404903,2026-05-14 19:03:43.404903,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8CA,1,2026-05-14 19:03:43.407754,2026-05-14 19:03:43.407754,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA8CB,1,2026-05-14 19:03:43.449553,2026-05-14 19:03:43.449553,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA95E,1,2026-04-28 21:49:34.076704,2026-04-28 21:49:34.076704,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA99B,1,2026-04-28 21:49:38.253250,2026-04-28 21:49:38.253250,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBA99D,1,2026-04-28 21:49:38.189436,2026-04-28 21:49:38.189436,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5C5,1,2026-04-28 21:49:38.199217,2026-04-28 21:49:38.199217,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC5CF,1,2026-05-14 19:03:43.232900,2026-05-14 19:03:43.232900,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC656,1,2026-05-15 23:18:52.409712,2026-05-15 23:18:52.409712,-76,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC658,1,2026-04-28 21:49:38.223314,2026-04-28 21:49:38.223314,-73,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC65C,1,2026-05-14 19:03:43.505331,2026-05-14 19:03:43.505331,-75,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC65D,1,2026-05-14 19:03:43.393725,2026-05-14 19:03:43.393725,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C0,1,2026-05-14 19:03:43.331942,2026-05-14 19:03:43.331942,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C1,1,2026-05-14 19:03:43.351006,2026-05-14 19:03:43.351006,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C3,1,2026-05-14 19:03:43.345905,2026-05-14 19:03:43.345905,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6C8,1,2026-05-14 19:03:43.336103,2026-05-14 19:03:43.336103,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6CC,1,2026-05-14 19:03:43.217994,2026-05-14 19:03:43.217994,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC6CE,1,2026-05-14 19:03:43.493741,2026-05-14 19:03:43.493741,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7C0,1,2026-05-14 19:03:43.341267,2026-05-14 19:03:43.341267,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7C1,1,2026-05-14 19:03:43.220750,2026-05-14 19:03:43.220750,-54,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7CB,1,2026-05-14 19:03:43.313881,2026-05-14 19:03:43.313881,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7CC,1,2026-05-14 19:03:43.441130,2026-05-14 19:03:43.441130,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7CE,1,2026-05-14 19:03:43.230727,2026-05-14 19:03:43.230727,-57,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC7CF,1,2026-05-14 19:03:43.424562,2026-05-14 19:03:43.424562,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC8C4,1,2026-05-14 19:03:43.205495,2026-05-14 19:03:43.205495,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC8C7,1,2026-05-14 19:03:43.489360,2026-05-14 19:03:43.489360,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC8CA,1,2026-05-14 19:03:43.490337,2026-05-14 19:03:43.490337,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC8CB,1,2026-05-14 19:03:43.238625,2026-05-14 19:03:43.238625,-55,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C1,1,2026-05-14 19:03:43.406854,2026-05-14 19:03:43.406854,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9C8,1,2026-05-14 19:03:43.249271,2026-05-14 19:03:43.249271,-60,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBC9CC,1,2026-05-14 19:03:43.401870,2026-05-14 19:03:43.401870,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8C3,1,2026-05-14 19:03:43.360006,2026-05-14 19:03:43.360006,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8C6,1,2026-05-14 19:03:42.909796,2026-05-14 19:03:42.909796,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8CA,1,2026-05-14 19:03:43.454506,2026-05-14 19:03:43.454506,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE8CC,1,2026-05-14 19:03:43.352791,2026-05-14 19:03:43.352791,-59,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C0,1,2026-05-14 19:03:43.357608,2026-05-14 19:03:43.357608,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C2,1,2026-05-14 19:03:43.422324,2026-05-14 19:03:43.422324,-69,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C5,1,2026-05-14 19:03:43.409871,2026-05-14 19:03:43.409871,-66,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9C6,1,2026-04-28 21:49:38.110068,2026-04-28 21:49:38.110068,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABBE9CE,1,2026-04-28 21:49:38.079057,2026-04-28 21:49:38.079057,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C0,1,2026-05-14 19:03:43.492188,2026-05-14 19:03:43.492188,-70,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C7,1,2026-05-14 19:03:43.450544,2026-05-14 19:03:43.450544,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06C8,1,2026-05-14 19:03:43.288254,2026-05-14 19:03:43.288254,-56,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06CA,1,2026-05-14 19:03:43.300729,2026-05-14 19:03:43.300729,-68,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC06CB,1,2026-05-14 19:03:43.405949,2026-05-14 19:03:43.405949,-61,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C3,1,2026-05-14 19:03:43.362724,2026-05-14 19:03:43.362724,-65,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C5,1,2026-04-28 21:49:38.222038,2026-04-28 21:49:38.222038,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09C6,1,2026-05-14 19:03:43.574852,2026-05-14 19:03:43.574852,-71,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09CA,1,2026-05-14 19:03:43.392267,2026-05-14 19:03:43.392267,-62,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09CB,1,2026-05-14 19:03:43.343632,2026-05-14 19:03:43.343632,-67,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09CC,1,2026-05-14 19:03:43.179875,2026-05-14 19:03:43.179875,-64,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E2801191A503006B3ABC09CD,1,2026-05-14 19:03:43.479037,2026-05-14 19:03:43.479037,-63,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+E28040BC052840BC05286573,1,2026-04-28 21:49:31.318179,2026-04-28 21:49:31.318179,-74,True,"Likely local/demo E280 tag; verify physically, then destroy/remove if not attached to a real item"
+F00242041150003000011002,1,2026-05-15 23:18:45.350739,2026-05-15 23:18:45.350739,-48,False,Review with EPC decoder and map to SKU/GTIN if real
+F00242041150003000021102,1,2026-05-15 23:18:45.359072,2026-05-15 23:18:45.359072,-47,False,Review with EPC decoder and map to SKU/GTIN if real
+F00242041150003000031802,1,2026-05-15 23:18:45.363274,2026-05-15 23:18:45.363274,-36,False,Review with EPC decoder and map to SKU/GTIN if real
+F00242041150003000041902,1,2026-05-15 23:18:45.366192,2026-05-15 23:18:45.366192,-36,False,Review with EPC decoder and map to SKU/GTIN if real
+F00242041150003000052002,1,2026-05-15 23:18:45.375833,2026-05-15 23:18:45.375833,-40,False,Review with EPC decoder and map to SKU/GTIN if real
+FF000000000000000000AA01,1,2026-05-16T02:01:32.418440,2026-05-16T02:01:32.418440,-46,False,Review with EPC decoder and map to SKU/GTIN if real
+FF000000000000000000AA02,1,2026-05-16T02:01:32.428952,2026-05-16T02:01:32.428952,-47,False,Review with EPC decoder and map to SKU/GTIN if real

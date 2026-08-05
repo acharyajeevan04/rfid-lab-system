@@ -1,0 +1,63 @@
+version: "3.9"
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: rfid-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./docker/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-log:/mosquitto/log
+    restart: unless-stopped
+    networks: [rfid-net]
+
+  rfid-backend:
+    build: .
+    container_name: rfid-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:////data/rfid_lab.db
+      - MQTT_ENABLED=true
+      - MQTT_BROKER_HOST=mosquitto
+      - MQTT_BROKER_PORT=1883
+      - MQTT_TOPIC_PREFIX=lab/rfid
+      - GOOGLE_DRIVE_ACCOUNT=searlabuta@gmail.com
+      - GOOGLE_DRIVE_ZEBRA_FOLDER_ID=${GOOGLE_DRIVE_ZEBRA_FOLDER_ID:-}
+      - GOOGLE_DRIVE_IMPINJ_FOLDER_ID=${GOOGLE_DRIVE_IMPINJ_FOLDER_ID:-}
+      - RFID_SCANNER_API_KEY=${RFID_SCANNER_API_KEY:-rfid-scanner-secret-key}
+      - DRIVE_POLL_INTERVAL=30
+    volumes:
+      - rfid-data:/data
+      - ./credentials.json:/app/credentials.json:ro
+      - ./token.json:/app/token.json
+    depends_on: [mosquitto]
+    restart: unless-stopped
+    networks: [rfid-net]
+
+  rfid-reader:
+    build: .
+    container_name: rfid-reader
+    command: python rfid_reader_service.py --mode reader
+    environment:
+      - IMPINJ_READER_HOST=${IMPINJ_READER_HOST:-192.168.1.100}
+      - MQTT_BROKER_HOST=mosquitto
+      - MQTT_BROKER_PORT=1883
+      - RSSI_THRESHOLD=-75
+      - BACKEND_SCAN_URL=http://rfid-backend:8000/api/scans
+      - RFID_SCANNER_API_KEY=${RFID_SCANNER_API_KEY:-rfid-scanner-secret-key}
+    depends_on: [mosquitto, rfid-backend]
+    restart: unless-stopped
+    network_mode: host
+
+volumes:
+  rfid-data:
+  mosquitto-data:
+  mosquitto-log:
+
+networks:
+  rfid-net:
+    driver: bridge

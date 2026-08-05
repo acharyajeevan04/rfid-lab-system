@@ -1,0 +1,972 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f4f6f8;
+  color:#111827;
+  overflow:hidden;
+}
+.wrap{
+  height:720px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  gap:14px;
+  padding:14px;
+}
+.card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+.head{
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  border-bottom:1px solid #e5e7eb;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.meta{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#6b7280;
+  font-size:12px;
+  font-weight:500;
+  text-transform:none;
+  letter-spacing:.03em;
+}
+.map{
+  height:460px;
+  position:relative;
+  background:
+    linear-gradient(#edf1f5 1px,transparent 1px) 0 0/36px 36px,
+    linear-gradient(90deg,#edf1f5 1px,transparent 1px) 0 0/36px 36px,
+    #fbfdff;
+  overflow:hidden;
+}
+.zone{
+  position:absolute;
+  border:2px dashed #2563eb;
+  border-radius:14px;
+  background:rgba(37,99,235,.035);
+  padding:15px 18px;
+}
+.zone.storage{
+  border-color:#ea580c;
+  background:rgba(234,88,12,.045);
+}
+.zone h3{
+  margin:0;
+  font-size:14px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.zone p{
+  margin:6px 0 0;
+  color:#6b7280;
+  font-size:12px;
+}
+.ant{
+  position:absolute;
+  width:18px;
+  height:18px;
+  z-index:8;
+  background:#111827;
+  border:3px solid #f59e0b;
+  transform:rotate(45deg);
+}
+.ant span{
+  position:absolute;
+  transform:rotate(-45deg);
+  left:20px;
+  top:-10px;
+  color:#92400e;
+  font-size:10px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.compass{
+  position:absolute;
+  right:22px;
+  top:22px;
+  width:74px;
+  height:74px;
+  z-index:35;
+  border:1px solid #cbd5e1;
+  border-radius:50%;
+  background:rgba(255,255,255,.9);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#475569;
+}
+.compass:before,.compass:after{
+  content:"";
+  position:absolute;
+  background:#cbd5e1;
+}
+.compass:before{left:50%;top:10px;width:1px;height:54px}
+.compass:after{top:50%;left:10px;height:1px;width:54px}
+.compass span{
+  position:absolute;
+  font-size:11px;
+  font-weight:900;
+}
+.compass .n{top:5px;left:50%;transform:translateX(-50%);color:#2563eb}
+.compass .s{bottom:5px;left:50%;transform:translateX(-50%)}
+.compass .e{right:7px;top:50%;transform:translateY(-50%)}
+.compass .w{left:7px;top:50%;transform:translateY(-50%)}
+
+.demo-dot{
+  position:absolute;
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  z-index:50;
+  border:4px solid #fff;
+  box-shadow:0 0 0 4px rgba(15,23,42,.08),0 14px 26px rgba(15,23,42,.24);
+  transform:translate(-50%,-50%);
+  transition:left .9s ease, top .9s ease, transform .25s ease;
+}
+.demo-dot:hover{
+  transform:translate(-50%,-50%) scale(1.18);
+}
+.demo-dot.pulse{
+  animation:pulse 1.25s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 4px rgba(15,23,42,.08),0 14px 26px rgba(15,23,42,.24)}
+  50%{box-shadow:0 0 0 12px rgba(37,99,235,.10),0 14px 26px rgba(15,23,42,.24)}
+}
+.demo-label{
+  position:absolute;
+  z-index:51;
+  transform:translate(18px,-50%);
+  background:rgba(255,255,255,.96);
+  border:1px solid #dbe3ee;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:900;
+  box-shadow:0 8px 18px rgba(15,23,42,.12);
+  white-space:nowrap;
+  max-width:210px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  transition:left .9s ease, top .9s ease;
+}
+.demo-trail{
+  position:absolute;
+  z-index:30;
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  opacity:.25;
+  transform:translate(-50%,-50%);
+}
+.demo-note{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  z-index:40;
+  max-width:520px;
+  background:rgba(255,255,255,.94);
+  border:1px solid #dbe3ee;
+  border-radius:14px;
+  padding:12px 14px;
+  box-shadow:0 10px 26px rgba(15,23,42,.12);
+}
+.demo-note b{
+  display:block;
+  font-size:14px;
+  margin-bottom:4px;
+}
+.demo-note span{
+  font-size:12px;
+  color:#6b7280;
+}
+.scan-table{
+  height:210px;
+  overflow:auto;
+  border-top:1px solid #e5e7eb;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+th,td{
+  padding:9px 12px;
+  border-bottom:1px solid #edf0f3;
+  text-align:left;
+  white-space:nowrap;
+}
+th{
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:2;
+  color:#6b7280;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+.status{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:72px;
+  padding:3px 8px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  background:#dcfce7;
+  color:#166534;
+}
+.status.unknown{background:#fee2e2;color:#991b1b}
+.status.mismatch{background:#fef3c7;color:#92400e}
+.side{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  min-width:0;
+}
+.summary{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:14px;
+}
+.stat{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  background:#fafafa;
+  padding:14px;
+}
+.stat .label{
+  font-size:11px;
+  font-weight:900;
+  color:#6b7280;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+}
+.stat .value{
+  font-size:28px;
+  font-weight:950;
+  margin-top:6px;
+}
+.legend{
+  max-height:310px;
+  overflow:auto;
+}
+.legend-item{
+  display:grid;
+  grid-template-columns:18px 1fr;
+  gap:10px;
+  padding:12px 14px;
+  border-top:1px solid #e5e7eb;
+}
+.legend-item:first-child{border-top:0}
+.legend-dot{
+  width:15px;
+  height:15px;
+  border-radius:999px;
+  margin-top:3px;
+  border:2px solid #fff;
+  box-shadow:0 0 0 2px rgba(15,23,42,.08);
+}
+.legend-title{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-weight:900;
+  font-size:14px;
+}
+.zone-pill{
+  padding:3px 8px;
+  border-radius:999px;
+  background:#e0f2fe;
+  color:#075985;
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.detail-row{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  gap:8px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+  line-height:1.55;
+}
+.k{color:#9ca3af;font-weight:900}
+.reader-row{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 14px;
+  border-top:1px solid #e5e7eb;
+  font-weight:800;
+}
+.reader-row:first-child{border-top:0}
+.empty{
+  padding:18px;
+  color:#6b7280;
+  font-size:13px;
+}
+@media(max-width:1100px){
+  body{overflow:auto}
+  .wrap{height:auto;grid-template-columns:1fr}
+}
+
+.demo-note{display:none!important}
+</style>
+
+<style id="movementPatchCSS">
+.demo-dot,
+.dot,
+.live-dot {
+  transition: left 0.9s ease, top 0.9s ease, cx 0.9s ease, cy 0.9s ease, transform 0.25s ease !important;
+}
+
+.moving-trail-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  opacity: 0.28;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.movement-pulse {
+  animation: movementPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes movementPulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(37,99,235,.12), 0 8px 20px rgba(15,23,42,.18); }
+  50% { box-shadow: 0 0 0 13px rgba(37,99,235,.08), 0 8px 20px rgba(15,23,42,.18); }
+}
+
+.demo-move-note {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  background: rgba(255,255,255,.94);
+  border: 1px solid #dbe3ee;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(15,23,42,.12);
+  color: #2563eb;
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="head">
+      <span>RFID Demo / Moving Tag Position</span>
+      <span class="meta">4 colored tags move across antenna zones</span>
+    </div>
+
+
+    <div id="demoInstructionBar" style="
+      padding:10px 16px;
+      border-bottom:1px solid #e5e7eb;
+      background:#f8fafc;
+      color:#4b5563;
+      font-size:13px;
+      line-height:1.45;
+    ">
+      <b style="color:#111827">Demo mode: colored RFID tags</b>
+      <span style="margin-left:8px">
+        Scan or move the colored tags near each antenna. The dot position updates live from the latest assigned zone.
+      </span>
+    </div>
+
+    <div class="map" id="map">
+      <div class="zone" style="left:8%;top:13%;width:28%;height:24%">
+        <h3>Door</h3><p>Zone A</p>
+      </div>
+
+      <div class="zone" style="left:38%;top:38%;width:25%;height:23%">
+        <h3>Conveyor</h3><p>Zone B</p>
+      </div>
+
+      <div class="zone" style="left:62%;top:16%;width:29%;height:31%">
+        <h3>Front North</h3><p>Zone C</p>
+      </div>
+
+      <div class="zone storage" style="left:13%;top:67%;width:34%;height:22%">
+        <h3>Back South</h3><p>Zone D · Storage</p>
+      </div>
+
+      <div class="ant" style="left:18%;top:29%"><span>ANT-01</span></div>
+      <div class="ant" style="left:49%;top:50%"><span>ANT-02</span></div>
+      <div class="ant" style="left:75%;top:31%"><span>ANT-03</span></div>
+      <div class="ant" style="left:29%;top:77%"><span>ANT-04</span></div>
+
+      <div class="compass">
+        <span class="n">N</span><span class="e">E</span><span class="s">S</span><span class="w">W</span>
+      </div>
+
+      <div id="trailLayer"></div>
+      <div id="dotLayer"></div>
+    </div>
+
+    <div class="scan-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Tag</th>
+            <th>EPC</th>
+            <th>Zone</th>
+            <th>RSSI</th>
+            <th>Conf</th>
+            <th>Reader</th>
+          </tr>
+        </thead>
+        <tbody id="scanRows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="card">
+      <div class="head"><span>Demo Summary</span><span class="meta" id="clock">--:--:--</span></div>
+      <div class="summary">
+        <div class="stat"><div class="label">Demo Tags</div><div class="value" id="demoCount">0</div></div>
+        <div class="stat"><div class="label">Seen Live</div><div class="value" id="seenCount">0</div></div>
+        <div class="stat"><div class="label">Moving</div><div class="value" id="movingCount">0</div></div>
+        <div class="stat"><div class="label">Unknown</div><div class="value" id="unknownCount">0</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span>Colored Tag Legend</span><span class="meta">latest position</span></div>
+      <div class="legend" id="tagLegend"><div class="empty">Waiting for colored tag scans...</div></div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span>Reader Network</span><span class="meta">4 Antenna Zones</span></div>
+      <div class="reader-row"><span>ANT-01</span><span>Zone A / Door</span></div>
+      <div class="reader-row"><span>ANT-02</span><span>Zone B / Conveyor</span></div>
+      <div class="reader-row"><span>ANT-03</span><span>Zone C / Front North</span></div>
+      <div class="reader-row"><span>ANT-04</span><span>Zone D / Back South</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/*
+  DEMO TAGS:
+  The photo shows five labels:
+  Blue serial 00001, Red serial 00002, Yellow serial 00003,
+  Green serial 00004, Purple serial 00005.
+
+  Because the photo shows barcode/serial but not RFID EPC,
+  this UI automatically assigns the first scanned EPCs to these colors.
+  For a strict demo, scan Blue first, Red second, Yellow third, Green fourth.
+*/
+
+const DEMO_TAG_ORDER = [
+  {name:"Blue dot",   short:"Blue",   color:"#2563eb", serial:"00001"},
+  {name:"Red dot",    short:"Red",    color:"#ef4444", serial:"00002"},
+  {name:"Yellow dot", short:"Yellow", color:"#f59e0b", serial:"00003"},
+  {name:"Green dot",  short:"Green",  color:"#22c55e", serial:"00004"},
+  {name:"Purple dot", short:"Purple", color:"#8b5cf6", serial:"00005"}
+];
+
+const DEMO_LIMIT = 4; // Professor asked for four tags. Change to 5 if using Purple also.
+
+let demoTagMap = JSON.parse(localStorage.getItem("demoTagMapRFID") || "{}");
+let lastPositions = JSON.parse(localStorage.getItem("demoTagPositionsRFID") || "{}");
+
+function saveDemoState(){
+  localStorage.setItem("demoTagMapRFID", JSON.stringify(demoTagMap));
+  localStorage.setItem("demoTagPositionsRFID", JSON.stringify(lastPositions));
+}
+
+function esc(v){
+  return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function normalizeZone(z){
+  z=String(z||"").trim();
+  const u=z.toUpperCase();
+  if(u==="A"||u.includes("ZONE A")||u.includes("DOOR"))return "A";
+  if(u==="B"||u.includes("ZONE B")||u.includes("CONVEYOR"))return "B";
+  if(u==="C"||u.includes("ZONE C")||u.includes("FRONT"))return "C";
+  if(u==="D"||u.includes("ZONE D")||u.includes("BACK")||u.includes("STORAGE"))return "D";
+  return "U";
+}
+
+function itemName(x){
+  return x.item_name || x.asset_name || x.matched_asset_name || "RFID tag";
+}
+function itemEpc(x){
+  return String(x.epc || x.EPC || "").trim();
+}
+function itemZone(x){
+  return x.zone || x.scanned_zone || x.assigned_zone || "Unknown";
+}
+function itemTime(x){
+  const t=x.last_time || x.scan_time || x.time || x.timestamp || x.created_at || "";
+  return String(t).includes("T") ? String(t).slice(11,19) : String(t || "—");
+}
+function itemRssi(x){
+  return x.rssi || x.rssi_dbm || x.RSSI || "—";
+}
+function itemReader(x){
+  return x.reader || x.reader_id || x.source || "—";
+}
+function itemConfidence(x){
+  const v=x.zone_confidence || x.confidence || "";
+  if(v===""||v===null||v===undefined)return "—";
+  const n=Number(v);
+  if(Number.isFinite(n))return Math.round(n*100)+"%";
+  return String(v);
+}
+function itemStatus(x){
+  return String(x.status || x.verification_status || "UNKNOWN").toUpperCase();
+}
+
+async function getLiveData(){
+  try{
+    const r=await fetch("/api/live-map-data?limit=100",{cache:"no-store"});
+    if(r.ok){
+      const d=await r.json();
+      return {items:d.items||[],summary:d.summary||{}};
+    }
+  }catch(e){}
+
+  try{
+    const r=await fetch("/api/scans?limit=100",{cache:"no-store"});
+    const d=await r.json();
+    const arr=Array.isArray(d)?d:(d.items||d.scans||d.data||[]);
+    return {items:arr,summary:{}};
+  }catch(e){
+    return {items:[],summary:{}};
+  }
+}
+
+function uniqueLatest(items){
+  const seen={};
+  const out=[];
+  for(const x of items){
+    const epc=itemEpc(x).toUpperCase();
+    if(!epc || seen[epc])continue;
+    seen[epc]=true;
+    out.push(x);
+  }
+  return out;
+}
+
+function assignDemoTags(items){
+  const epcs = Object.keys(demoTagMap);
+
+  for(const x of items){
+    const epc=itemEpc(x).toUpperCase();
+    if(!epc)continue;
+
+    if(!demoTagMap[epc] && Object.keys(demoTagMap).length < DEMO_LIMIT){
+      const idx=Object.keys(demoTagMap).length;
+      demoTagMap[epc]=DEMO_TAG_ORDER[idx];
+    }
+  }
+
+  saveDemoState();
+}
+
+function trackedItems(items){
+  return items
+    .filter(x=>demoTagMap[itemEpc(x).toUpperCase()])
+    .map(x=>({
+      ...x,
+      demo:demoTagMap[itemEpc(x).toUpperCase()]
+    }));
+}
+
+const zoneTargets={
+  A:{x:23,y:28},
+  B:{x:50,y:50},
+  C:{x:76,y:31},
+  D:{x:30,y:75},
+  U:{x:88,y:78}
+};
+
+const zoneOffsets=[
+  {x:-3,y:-4},
+  {x:4,y:-4},
+  {x:-3,y:5},
+  {x:4,y:5},
+  {x:0,y:0}
+];
+
+function renderMovingDots(items){
+  const layer=document.getElementById("dotLayer");
+  const trail=document.getElementById("trailLayer");
+  layer.innerHTML="";
+  trail.innerHTML="";
+
+  items.forEach((x,idx)=>{
+    const epc=itemEpc(x).toUpperCase();
+    const tag=x.demo;
+    const zone=normalizeZone(itemZone(x));
+    const base=zoneTargets[zone]||zoneTargets.U;
+    const off=zoneOffsets[idx % zoneOffsets.length];
+
+    const target={
+      x:base.x+off.x,
+      y:base.y+off.y
+    };
+
+    const previous=lastPositions[epc];
+    const moved=previous && (previous.zone !== zone);
+
+    if(previous){
+      const t=document.createElement("div");
+      t.className="demo-trail";
+      t.style.left=previous.x+"%";
+      t.style.top=previous.y+"%";
+      t.style.background=tag.color;
+      trail.appendChild(t);
+    }
+
+    lastPositions[epc]={x:target.x,y:target.y,zone};
+
+    const dot=document.createElement("div");
+    dot.className="demo-dot " + (moved ? "pulse" : "");
+    dot.style.left=target.x+"%";
+    dot.style.top=target.y+"%";
+    dot.style.background=tag.color;
+    dot.title=`${tag.name} | ${epc} | Zone ${zone} | RSSI ${itemRssi(x)}`;
+    layer.appendChild(dot);
+
+    const label=document.createElement("div");
+    label.className="demo-label";
+    label.style.left=target.x+"%";
+    label.style.top=target.y+"%";
+    label.textContent=`${tag.short} · Zone ${zone}`;
+    layer.appendChild(label);
+  });
+
+  saveDemoState();
+}
+
+function renderLegend(items){
+  const el=document.getElementById("tagLegend");
+
+  if(!Object.keys(demoTagMap).length){
+    el.innerHTML=`<div class="empty">Scan Blue, Red, Yellow, and Green tags once to assign demo colors.</div>`;
+    return;
+  }
+
+  const byEpc={};
+  items.forEach(x=>byEpc[itemEpc(x).toUpperCase()]=x);
+
+  el.innerHTML=Object.entries(demoTagMap).slice(0,DEMO_LIMIT).map(([epc,tag])=>{
+    const x=byEpc[epc];
+    const zone=x ? normalizeZone(itemZone(x)) : "—";
+    const active=x ? "" : "opacity:.55";
+    return `
+      <div class="legend-item" style="${active}">
+        <div class="legend-dot" style="background:${tag.color}"></div>
+        <div>
+          <div class="legend-title">
+            <span>${esc(tag.name)}</span>
+            <span class="zone-pill">Zone ${esc(zone)}</span>
+          </div>
+          <div class="detail-row"><span class="k">SERIAL</span><span>${esc(tag.serial)}</span></div>
+          <div class="detail-row"><span class="k">EPC</span><span>${esc(epc)}</span></div>
+          <div class="detail-row"><span class="k">RSSI</span><span>${esc(x ? itemRssi(x) : "—")}</span></div>
+          <div class="detail-row"><span class="k">CONF</span><span>${esc(x ? itemConfidence(x) : "—")}</span></div>
+          <div class="detail-row"><span class="k">LAST</span><span>${esc(x ? itemTime(x) : "Not seen yet")}</span></div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function renderTable(items){
+  const tbody=document.getElementById("scanRows");
+  tbody.innerHTML=items.slice(0,10).map(x=>{
+    const tag=x.demo || {name:"Other tag", color:"#64748b"};
+    const status=itemStatus(x);
+    const cls=status==="MATCHED" ? "" : status==="MISMATCH" ? "mismatch" : "unknown";
+    return `
+      <tr>
+        <td>${esc(itemTime(x))}</td>
+        <td><span style="display:inline-block;width:10px;height:10px;border-radius:99px;background:${tag.color};margin-right:6px"></span>${esc(tag.name)}</td>
+        <td>${esc(itemEpc(x))}</td>
+        <td>Zone ${esc(normalizeZone(itemZone(x)))}</td>
+        <td>${esc(itemRssi(x))}</td>
+        <td>${esc(itemConfidence(x))}</td>
+        <td>${esc(itemReader(x))}</td>
+      </tr>`;
+  }).join("");
+}
+
+function renderSummary(tracked, allItems){
+  const seen=tracked.length;
+  const moving=tracked.filter(x=>{
+    const epc=itemEpc(x).toUpperCase();
+    const zone=normalizeZone(itemZone(x));
+    return lastPositions[epc] && lastPositions[epc].zone !== zone;
+  }).length;
+
+  const unknown=allItems.filter(x=>itemStatus(x)!=="MATCHED").length;
+
+  document.getElementById("demoCount").textContent=DEMO_LIMIT;
+  document.getElementById("seenCount").textContent=seen;
+  document.getElementById("movingCount").textContent=moving;
+  document.getElementById("unknownCount").textContent=unknown;
+  document.getElementById("clock").textContent=new Date().toLocaleTimeString();
+}
+
+async function refresh(){
+  const data=await getLiveData();
+  const latest=uniqueLatest(data.items||[]);
+
+  assignDemoTags(latest);
+
+  const tracked=trackedItems(latest);
+
+  renderSummary(tracked, latest);
+  renderMovingDots(tracked);
+  renderLegend(latest);
+  renderTable(tracked);
+}
+
+refresh();
+setInterval(refresh,2000);
+</script>
+
+<script id="movementPatchJS">
+(function(){
+  // This patch keeps the current UI exactly the same.
+  // It only adds animated movement behavior to the existing map.
+
+  const AUTO_DEMO_MOVEMENT = true;   // keep true for professor demo
+  const MOVE_EVERY_MS = 2600;
+
+  const demoZones = ["A", "B", "C", "D"];
+  const zoneTargets = {
+    A: {x: 24, y: 28},
+    B: {x: 51, y: 51},
+    C: {x: 76, y: 32},
+    D: {x: 30, y: 75},
+    U: {x: 88, y: 78}
+  };
+
+  const tagColors = ["#2563eb", "#ef4444", "#f59e0b", "#22c55e", "#8b5cf6"];
+  const tagNames = ["Blue dot", "Red dot", "Yellow dot", "Green dot", "Purple dot"];
+
+  let demoStep = 0;
+  let lastDemoPositions = {};
+  let assignedDemoTags = JSON.parse(localStorage.getItem("rfidMovingDemoTags") || "{}");
+
+  function save(){
+    localStorage.setItem("rfidMovingDemoTags", JSON.stringify(assignedDemoTags));
+  }
+
+  function epcOf(x){
+    return String(x.epc || x.EPC || "").trim().toUpperCase();
+  }
+
+  function normalizeZone(z){
+    z = String(z || "").toUpperCase();
+    if(z === "A" || z.includes("ZONE A") || z.includes("DOOR")) return "A";
+    if(z === "B" || z.includes("ZONE B") || z.includes("CONVEYOR")) return "B";
+    if(z === "C" || z.includes("ZONE C") || z.includes("FRONT")) return "C";
+    if(z === "D" || z.includes("ZONE D") || z.includes("BACK") || z.includes("STORAGE")) return "D";
+    return "U";
+  }
+
+  function assignDemoIdentity(items){
+    for(const item of items){
+      const epc = epcOf(item);
+      if(!epc) continue;
+
+      if(!assignedDemoTags[epc] && Object.keys(assignedDemoTags).length < 4){
+        const i = Object.keys(assignedDemoTags).length;
+        assignedDemoTags[epc] = {
+          name: tagNames[i],
+          color: tagColors[i],
+          index: i
+        };
+      }
+    }
+    save();
+  }
+
+  function makeTrail(layer, epc, color){
+    const prev = lastDemoPositions[epc];
+    if(!prev) return;
+
+    const t = document.createElement("div");
+    t.className = "moving-trail-dot";
+    t.style.left = prev.x + "%";
+    t.style.top = prev.y + "%";
+    t.style.background = color;
+    layer.appendChild(t);
+
+    setTimeout(() => {
+      if(t && t.parentNode) t.parentNode.removeChild(t);
+    }, 3500);
+  }
+
+  function getMapLayer(){
+    return document.getElementById("dotLayer") || document.getElementById("tagLayer") || document.querySelector(".map");
+  }
+
+  function getItemsFromExistingState(){
+    // Use existing global lastItems if your current map already has it
+    if(Array.isArray(window.lastItems)) return window.lastItems;
+
+    // Fallback: create demo items from assigned tags
+    return Object.keys(assignedDemoTags).map(epc => ({epc}));
+  }
+
+  async function fetchItems(){
+    try{
+      const r = await fetch("/api/live-map-data?limit=100", {cache:"no-store"});
+      if(r.ok){
+        const d = await r.json();
+        return d.items || [];
+      }
+    }catch(e){}
+
+    try{
+      const r = await fetch("/api/scans?limit=100", {cache:"no-store"});
+      const d = await r.json();
+      return Array.isArray(d) ? d : (d.items || d.scans || d.data || []);
+    }catch(e){
+      return getItemsFromExistingState();
+    }
+  }
+
+  function drawMovingDemo(items){
+    const map = document.querySelector(".map");
+    const layer = getMapLayer();
+    if(!map || !layer) return;
+
+    let patchLayer = document.getElementById("movementPatchLayer");
+    if(!patchLayer){
+      patchLayer = document.createElement("div");
+      patchLayer.id = "movementPatchLayer";
+      patchLayer.style.position = "absolute";
+      patchLayer.style.inset = "0";
+      patchLayer.style.pointerEvents = "none";
+      patchLayer.style.zIndex = "80";
+      map.appendChild(patchLayer);
+    }
+
+    patchLayer.innerHTML = "";
+
+    assignDemoIdentity(items);
+
+    const tracked = Object.entries(assignedDemoTags).slice(0,4);
+
+    tracked.forEach(([epc, tag], i) => {
+      const realItem = items.find(x => epcOf(x) === epc);
+
+      // Real mode: if scanner/API gives zone, use it.
+      // Demo mode: if same zone does not change, cycle zones visually.
+      let zone = realItem ? normalizeZone(realItem.zone || realItem.scanned_zone || realItem.assigned_zone) : "A";
+
+      if(AUTO_DEMO_MOVEMENT){
+        zone = demoZones[(demoStep + i) % demoZones.length];
+      }
+
+      const base = zoneTargets[zone] || zoneTargets.U;
+      const offset = [
+        {x:-3,y:-3},
+        {x:3,y:-3},
+        {x:-3,y:4},
+        {x:3,y:4}
+      ][i] || {x:0,y:0};
+
+      const x = base.x + offset.x;
+      const y = base.y + offset.y;
+
+      makeTrail(patchLayer, epc, tag.color);
+
+      const dot = document.createElement("div");
+      dot.className = "demo-dot movement-pulse";
+      dot.style.position = "absolute";
+      dot.style.left = x + "%";
+      dot.style.top = y + "%";
+      dot.style.width = "28px";
+      dot.style.height = "28px";
+      dot.style.borderRadius = "999px";
+      dot.style.background = tag.color;
+      dot.style.border = "4px solid white";
+      dot.style.transform = "translate(-50%, -50%)";
+      dot.style.pointerEvents = "auto";
+      dot.title = `${tag.name} | ${epc} | Zone ${zone}`;
+      patchLayer.appendChild(dot);
+
+      const label = document.createElement("div");
+      label.className = "demo-label";
+      label.style.position = "absolute";
+      label.style.left = x + "%";
+      label.style.top = y + "%";
+      label.style.transform = "translate(18px, -50%)";
+      label.style.background = "rgba(255,255,255,.96)";
+      label.style.border = "1px solid #dbe3ee";
+      label.style.borderRadius = "999px";
+      label.style.padding = "6px 10px";
+      label.style.fontSize = "12px";
+      label.style.fontWeight = "900";
+      label.style.boxShadow = "0 8px 18px rgba(15,23,42,.12)";
+      label.style.whiteSpace = "nowrap";
+      label.textContent = `${tag.name.replace(" dot","")} · Zone ${zone}`;
+      patchLayer.appendChild(label);
+
+      lastDemoPositions[epc] = {x, y, zone};
+    });
+
+    let note = document.getElementById("demoMoveNote");
+    if(!note){
+      note = document.createElement("div");
+      note.id = "demoMoveNote";
+      note.className = "demo-move-note";
+      map.appendChild(note);
+    }
+    note.textContent = AUTO_DEMO_MOVEMENT ? "Demo movement ON" : "Live movement from scanner";
+  }
+
+  async function loop(){
+    const items = await fetchItems();
+    drawMovingDemo(items);
+    demoStep++;
+  }
+
+  loop();
+  setInterval(loop, MOVE_EVERY_MS);
+
+  window.resetMovingDemoTags = function(){
+    localStorage.removeItem("rfidMovingDemoTags");
+    assignedDemoTags = {};
+    lastDemoPositions = {};
+    location.reload();
+  };
+})();
+</script>
+
+</body>
+</html>
